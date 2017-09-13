@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1505288408 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\gamemakerexport.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"rpslib.h"
+
+1505277172 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\main.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+
+1505288445 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rpslib.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+

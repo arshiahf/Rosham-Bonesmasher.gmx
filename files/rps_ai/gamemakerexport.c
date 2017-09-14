@@ -1,14 +1,13 @@
 #include "rpslib.h"
 
-#define GMEXPORT extern __declspec(dllexport)
-
 // Default low level rock-paper-scissors gameplay based upon average players with low risk
-GMEXPORT char rpsNormal(char lastThrow, double winLast, double tieLast)
+GMEXPORT char rpsNormal(double lastThrow, double winLast, double tieLast)
 {
     char rpsThrow;
+    return 1;
 
     // Near-random starting throw
-    if(!(lastThrow) && !(winLast) && !(tieLast))
+    if(/*strcmp(&lastThrow, &FIRSTTHROW)*/ !(lastThrow) && !(winLast) && !(tieLast))
     {
         double firstThrow = randnum(101);
 
@@ -42,4 +41,9 @@ GMEXPORT char rpsNormal(char lastThrow, double winLast, double tieLast)
     }
 
     return rpsThrow;
+}
+
+GMEXPORT double testRun()
+{
+    return 10;
 }

@@ -3,7 +3,25 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles"/>
+  <datafiles number="3" name="datafiles">
+    <datafile>
+      <name>rps_ai.dll</name>
+      <exists>-1</exists>
+      <size>37307</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>105553658413120</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>rps_ai.dll</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions>
     <extension index="0">extensions\artificial_intelligence</extension>
   </NewExtensions>
@@ -29,6 +47,12 @@
           <sprite>sprites\punchPressed</sprite>
           <sprite>sprites\smash</sprite>
           <sprite>sprites\smashPressed</sprite>
+          <sprite>sprites\rock</sprite>
+          <sprite>sprites\rockPressed</sprite>
+          <sprite>sprites\paper</sprite>
+          <sprite>sprites\paperPressed</sprite>
+          <sprite>sprites\scissors</sprite>
+          <sprite>sprites\scissorsPressed</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -39,6 +63,8 @@
     <script>scripts\InheritEvents.gml</script>
     <script>scripts\ClickButton.gml</script>
     <script>scripts\CreateButtonsRPS.gml</script>
+    <script>scripts\CallRPSNormal.gml</script>
+    <script>scripts\script5.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objectGeneric</object>
@@ -69,6 +95,7 @@
           <object>objects\ram0</object>
           <object>objects\punch0</object>
           <object>objects\smash0</object>
+          <object>objects\rock0</object>
         </objects>
       </objects>
     </objects>

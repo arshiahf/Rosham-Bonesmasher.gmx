@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <windows.h>
 
 const char ROCK = 'r';
 const char PAPER = 'p';
 const char SCISSORS = 's';
+const char FIRSTTHROW = 'f';
 
 #ifndef __RPSLIB_H__
 #define __RPSLIB_H__
 
-#include <windows.h>
+#define GMEXPORT extern __declspec(dllexport)
 
 double randnum(int cap)
 {
@@ -24,13 +27,13 @@ char clockwiseThrow(char lastThrow)
     switch(lastThrow)
     {
         case 'r':
-            newThrow = 's';
+            newThrow = SCISSORS;
             break;
         case 'p':
-            newThrow = 'r';
+            newThrow = ROCK;
             break;
         case 's':
-            newThrow = 'p';
+            newThrow = PAPER;
             break;
     }
     return newThrow;
@@ -42,13 +45,13 @@ char counterclockwiseThrow(char lastThrow)
     switch(lastThrow)
     {
         case 'r':
-            newThrow = 'p';
+            newThrow = PAPER;
             break;
         case 'p':
-            newThrow = 's';
+            newThrow = SCISSORS;
             break;
         case 's':
-            newThrow = 'r';
+            newThrow = ROCK;
             break;
     }
     return newThrow;

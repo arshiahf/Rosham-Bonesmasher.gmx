@@ -4,7 +4,7 @@
   <version>1.0.0</version>
   <packageID></packageID>
   <ProductID>ACBD3CFF4E539AD869A0E8E3B4B022DD</ProductID>
-  <date>12/09/17</date>
+  <date>13/09/17</date>
   <license>Free to use, also for commercial games.</license>
   <description></description>
   <helpfile></helpfile>
@@ -49,11 +49,10 @@
           <name>rpsNormal</name>
           <externalName>rpsNormal</externalName>
           <kind>12</kind>
-          <help>Returns a rock-paper-scissors throw that an average person would give. Arguments are (lastThrow, wonLast, tieLast)</help>
-          <returnType>1</returnType>
-          <argCount>4</argCount>
+          <help></help>
+          <returnType>2</returnType>
+          <argCount>3</argCount>
           <args>
-            <arg>1</arg>
             <arg>2</arg>
             <arg>2</arg>
             <arg>2</arg>

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check(buttonKey)
+            <string>if keyboard_check(buttonKey) or mouse_check_button_pressed(mb_left)
 {
     sprite_index = pressedSprite
 }

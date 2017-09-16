@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="3" name="datafiles">
+  <datafiles number="4" name="datafiles">
     <datafile>
       <name>rps_ai.dll</name>
       <exists>-1</exists>
-      <size>37307</size>
+      <size>39533</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -16,14 +16,14 @@
       <store>0</store>
       <ConfigOptions>
         <Config name="Default">
-          <CopyToMask>105553658413120</CopyToMask>
+          <CopyToMask>9223372036854775807</CopyToMask>
         </Config>
       </ConfigOptions>
       <filename>rps_ai.dll</filename>
     </datafile>
   </datafiles>
   <NewExtensions>
-    <extension index="0">extensions\artificial_intelligence</extension>
+    <extension index="0">extensions\rps_ai</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -63,8 +63,6 @@
     <script>scripts\InheritEvents.gml</script>
     <script>scripts\ClickButton.gml</script>
     <script>scripts\CreateButtonsRPS.gml</script>
-    <script>scripts\CallRPSNormal.gml</script>
-    <script>scripts\script5.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objectGeneric</object>

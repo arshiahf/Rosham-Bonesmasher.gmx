@@ -12,7 +12,30 @@ const char FIRSTTHROW = 'f';
 #ifndef __RPSLIB_H__
 #define __RPSLIB_H__
 
-#define GMEXPORT extern __declspec(dllexport)
+
+#ifdef BUILD_DLL
+    #define GMEXPORT extern __declspec(dllexport)
+#else
+    #define GMEXPORT extern __declspec(dllexport)
+#endif
+
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+GMEXPORT char * rpsNormal(char lastThrow, double winLast, double tieLast);
+GMEXPORT double testRun();
+//GMEXPORT void SomeFunction(const LPCSTR sometext);
+double randnum(int cap);
+char clockwiseThrow(char lastThrow);
+char counterclockwiseThrow(char lastThrow);
+char chanceThrow(char lastThrow, double clockwise, double stay, double counterclockwise);
+
+#ifdef __cplusplus
+}
+#endif
 
 double randnum(int cap)
 {

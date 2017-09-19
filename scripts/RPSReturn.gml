@@ -1,6 +1,8 @@
 compThrow = external_call(global.rpsReturn, global.difficulty, global.playerHistory, global.winLast, global.tieLast);
 playerThrow = string_char_at(global.playerHistory, 1);
 
+show_debug_message(compThrow);
+
 if(compThrow == playerThrow)
 {
     global.winLast = 0;

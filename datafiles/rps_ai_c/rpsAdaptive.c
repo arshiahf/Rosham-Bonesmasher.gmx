@@ -1,6 +1,6 @@
 #include "rps_ai.h"
 
-char rpsAdaptive()
+char rpsAdaptive(char * playerHistory)
 {
     if(strlen(playerHistory) > 3)
     {
@@ -30,7 +30,7 @@ char rpsAdaptive()
                     if(!(playerPatternMatch))
                     {
                         int k = 0;
-                        while(k < patternSize)
+                        while(k < patternSize + 1)
                         {
                             if(playerPattern[patternSize - k - 1] != playerHistory[j - k - 1])
                             {

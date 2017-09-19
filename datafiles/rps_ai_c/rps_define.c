@@ -21,29 +21,28 @@ double randnum(int cap)
 
 GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double winLastIn, double tieLastIn)
 {
-    playerHistory[strlen(playerInput) + 1] = playerInput;
     winLast = winLastIn;
     tieLast = tieLastIn;
 
-    if(strlen(playerHistory) == 1)
+    if(strlen(playerInput) == 1)
     {
         rpsThrow[0] = rpsFirst();
         return rpsThrow;
     }
 
-    cpuLast = setLast();
+    cpuLast = setLast(playerInput[0]);
 
-    if(strcmp(HARD, difficulty))
+    if(!(strcmp(HARD, difficulty)))
     {
 
     }
-    else if(strcmp(HARDER, difficulty))
+    else if(!(strcmp(HARDER, difficulty)))
     {
 
     }
-    else if(strcmp(ADAPTIVE, difficulty))
+    else if(!(strcmp(ADAPTIVE, difficulty)))
     {
-        rpsThrow[0] = rpsAdaptive();
+        rpsThrow[0] = rpsAdaptive(playerInput);
     }
     else
     {
@@ -55,9 +54,8 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double wi
 
 // Compares last two throws to determine win/loss of last round
 
-char setLast()
+char setLast(char playerThrow)
 {
-    char playerThrow = playerHistory[0];
     if((playerThrow == ROCK && tieLast) || (playerThrow == SCISSORS && winLast) || (playerThrow == PAPER && !(winLast) && !(tieLast)))
     {
         return ROCK;

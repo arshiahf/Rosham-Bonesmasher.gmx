@@ -31,7 +31,6 @@ extern const char HARD[];
 extern const char HARDER[];
 extern const char ADAPTIVE[];
 
-char * playerHistory;
 char cpuLast;
 double winLast;
 double tieLast;
@@ -39,12 +38,12 @@ char rpsThrow[2];
 
 double randnum(int cap);
 char rpsFirst();
-char setLast();
+char setLast(char playerThrow);
 char clockwiseThrow(char lastThrow);
 char counterclockwiseThrow(char lastThrow);
 char chanceThrow(char lastThrow, double clockwise, double stay, double counterclockwise);
 char rpsNormal(char lastThrow);
-char rpsAdaptive();
+char rpsAdaptive(char * playerHistory);
 GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double winLastIn, double tieLastIn);
 
 #endif // __RPS_AI_H__

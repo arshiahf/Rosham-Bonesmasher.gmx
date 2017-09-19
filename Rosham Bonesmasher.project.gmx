@@ -73,6 +73,7 @@
     <script>scripts\CheckWin.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\initialize</object>
     <object>objects\objectGeneric</object>
     <objects name="Living">
       <object>objects\livingGeneric</object>

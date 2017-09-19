@@ -41,7 +41,10 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="rpsAdaptive.c">
+		<Unit filename="rpsAdaptiveLearning.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rpsAdaptivePattern.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="rpsNormal.c">

@@ -5,10 +5,11 @@ global.SCISSORS = 's';
 global.NORMAL = "normal";
 global.HARD = "hard";
 global.HARDER = "harder";
-global.ADAPTIVE = "adaptive";
+global.ADAPTIVEPATTERN = "adaptivepattern";
+global.ADAPTIVELEARNING = "adaptivelearning";
 
 // RPS variables
-global.difficulty = global.ADAPTIVE;
+global.difficulty = global.ADAPTIVEPATTERN;
 global.playerHistory = "";
 global.winLast = 0;
 global.tieLast = 0;

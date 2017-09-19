@@ -51,7 +51,7 @@
 1505610602 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rps_stats.h
 	"rps_ai.h"
 
-1505784832 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_ai.h
+1505849534 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_ai.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
@@ -60,7 +60,7 @@
 1505615942 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_stats.h
 	"rps_ai.h"
 
-1505784832 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_ai.h
+1505849534 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_ai.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
@@ -75,13 +75,13 @@
 1505586333 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\testrun.c
 	"rps_ai.h"
 
-1505783383 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rpsadaptive.c
+1505842279 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rpsadaptive.c
 	"rps_ai.h"
 
 1505615942 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_declare.c
 	"rps_ai.h"
 
-1505784656 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_define.c
+1505849647 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_define.c
 	"rps_ai.h"
 
 1505794416 source:c:\users\allison brown\documents\gamemaker\projects\rosham-bonesmasher.gmx\datafiles\rps_ai_c\rps_ai.h
@@ -104,4 +104,9 @@
 
 1505794479 source:c:\users\allison brown\documents\gamemaker\projects\rosham-bonesmasher.gmx\datafiles\rps_ai_c\rps_define.c
 	"rps_ai.h"
+
+1505849242 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rpsadaptivepattern.c
+	"rps_ai.h"
+
+1505849424 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rpsadaptivelearning.c
 

@@ -1,6 +1,6 @@
 #include "rps_ai.h"
 
-char rpsAdaptive(char * playerHistory)
+char rpsAdaptivePattern(const char * playerHistory)
 {
     if(strlen(playerHistory) > 3)
     {
@@ -25,14 +25,14 @@ char rpsAdaptive(char * playerHistory)
             if(!(playerPatternMatch))
             {
                 int j = patternSize;
-                while(j < strlen(playerHistory))
+                while(j < strlen(playerHistory) - 1)
                 {
                     if(!(playerPatternMatch))
                     {
                         int k = 0;
-                        while(k < patternSize + 1)
+                        while(k <= patternSize)
                         {
-                            if(playerPattern[patternSize - k - 1] != playerHistory[j - k - 1])
+                            if(playerPattern[patternSize - k] != playerHistory[j - k])
                             {
                                 break;
                             }
@@ -57,11 +57,17 @@ char rpsAdaptive(char * playerHistory)
             }
             patternSize--;
         }
-
-        return counterclockwiseThrow(playerPatternMatch);
+        if(playerPatternMatch == ROCK || playerPatternMatch == PAPER || playerPatternMatch == SCISSORS)
+        {
+            return counterclockwiseThrow(playerPatternMatch);
+        }
+        else
+        {
+            return rpsNormal(cpuLast);
+        }
     }
     else
     {
-        return rpsNormal(playerHistory[0]);
+        return rpsNormal(cpuLast);
     }
 }

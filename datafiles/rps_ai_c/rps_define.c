@@ -7,7 +7,8 @@ const char FIRSTTHROW = 'f';
 
 const char HARD[] = "hard";
 const char HARDER[] = "harder";
-const char ADAPTIVE[] = "adaptive";
+const char ADAPTIVEPATTERN[] = "adaptivepattern";
+const char ADAPTIVELEARNING[] = "adaptivelearning";
 
 // Returns a pseudo-random number using the system clock as a seed
 double randnum(int cap)
@@ -27,22 +28,26 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double wi
     if(strlen(playerInput) == 1)
     {
         rpsThrow[0] = rpsFirst();
-        return rpsThrow;
+        //return rpsThrow;
     }
 
     cpuLast = setLast(playerInput[0]);
 
     if(!(strcmp(HARD, difficulty)))
     {
-
+        //rpsThrow[0] = rpsHard(cpuLast);
     }
     else if(!(strcmp(HARDER, difficulty)))
     {
-
+        //rpsThrow[0] = rpsHarder(cpuLast);
     }
-    else if(!(strcmp(ADAPTIVE, difficulty)))
+    else if(!(strcmp(ADAPTIVEPATTERN, difficulty)))
     {
-        rpsThrow[0] = rpsAdaptive(playerInput);
+        rpsThrow[0] = rpsAdaptivePattern(playerInput);
+    }
+    else if(!(strcmp(ADAPTIVELEARNING, difficulty)))
+    {
+        //rpsThrow[0] = rpsAdaptiveLearning(playerInput);
     }
     else
     {

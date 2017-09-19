@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="4" name="datafiles">
+  <datafiles number="11" name="datafiles">
     <datafile>
-      <name>rps_ai.dll</name>
+      <name>rps_ai_c.dll</name>
       <exists>-1</exists>
-      <size>39533</size>
+      <size>33926</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -19,12 +19,10 @@
           <CopyToMask>9223372036854775807</CopyToMask>
         </Config>
       </ConfigOptions>
-      <filename>rps_ai.dll</filename>
+      <filename>rps_ai_c.dll</filename>
     </datafile>
   </datafiles>
-  <NewExtensions>
-    <extension index="0">extensions\rps_ai</extension>
-  </NewExtensions>
+  <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="Living">
@@ -55,6 +53,12 @@
           <sprite>sprites\scissorsPressed</sprite>
         </sprites>
       </sprites>
+      <sprites name="Notification">
+        <sprite>sprites\throwWin</sprite>
+        <sprite>sprites\throwLose</sprite>
+        <sprite>sprites\roundWin</sprite>
+        <sprite>sprites\roundLose</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -63,6 +67,10 @@
     <script>scripts\InheritEvents.gml</script>
     <script>scripts\ClickButton.gml</script>
     <script>scripts\CreateButtonsRPS.gml</script>
+    <script>scripts\InitRPS.gml</script>
+    <script>scripts\InitVariables.gml</script>
+    <script>scripts\RPSReturn.gml</script>
+    <script>scripts\CheckWin.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\objectGeneric</object>
@@ -90,10 +98,9 @@
         <object>objects\buttonGeneric</object>
         <objects name="RPS">
           <object>objects\rpsGeneric</object>
-          <object>objects\ram0</object>
-          <object>objects\punch0</object>
-          <object>objects\smash0</object>
           <object>objects\rock0</object>
+          <object>objects\paper0</object>
+          <object>objects\scissors0</object>
         </objects>
       </objects>
     </objects>

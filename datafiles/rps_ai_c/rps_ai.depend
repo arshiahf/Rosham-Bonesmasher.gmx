@@ -1,0 +1,86 @@
+# depslib dependency file v1.0
+1505525528 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\gamemakerexport.c
+	"rpslib.h"
+
+1505583920 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\main.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<windows.h>
+
+1505525031 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rpslib.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<windows.h>
+
+1505582857 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rps_ai.c
+	"rps_ai.h"
+
+1505586695 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rps_ai.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+
+1505583192 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\main.c
+	"main.h"
+
+1505583192 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\main.cpp
+	"main.h"
+
+1505610602 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rpsnormal.c
+	"rps_stats.h"
+
+1505610602 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rps_stats.h
+	"rps_ai.h"
+
+1505586333 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\testrun.c
+	"rps_ai.h"
+
+1505586695 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rps_ai.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+
+1505610602 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\files\rps_ai\rps_stats.h
+	"rps_ai.h"
+
+1505784832 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_ai.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+
+1505615942 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_stats.h
+	"rps_ai.h"
+
+1505784832 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_ai.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+
+1505714344 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rpsnormal.c
+	"rps_ai.h"
+
+1505615685 d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_stats.h
+	"rps_ai.h"
+
+1505586333 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\testrun.c
+	"rps_ai.h"
+
+1505783383 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rpsadaptive.c
+	"rps_ai.h"
+
+1505615942 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_declare.c
+	"rps_ai.h"
+
+1505784656 source:d:\users\matthew\documents\gamemaker\projects\rosham bonesmasher.gmx\datafiles\rps_ai_c\rps_define.c
+	"rps_ai.h"
+

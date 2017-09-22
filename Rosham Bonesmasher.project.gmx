@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="11" name="datafiles">
+  <datafiles number="12" name="datafiles">
     <datafile>
       <name>rps_ai_c.dll</name>
       <exists>-1</exists>
-      <size>33926</size>
+      <size>37535</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -65,12 +65,14 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\InheritEvents.gml</script>
-    <script>scripts\ClickButton.gml</script>
     <script>scripts\CreateButtonsRPS.gml</script>
     <script>scripts\InitRPS.gml</script>
     <script>scripts\InitVariables.gml</script>
     <script>scripts\RPSReturn.gml</script>
     <script>scripts\CheckWin.gml</script>
+    <script>scripts\KeyboardPress.gml</script>
+    <script>scripts\MouseClick.gml</script>
+    <script>scripts\MouseOver.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\initialize</object>

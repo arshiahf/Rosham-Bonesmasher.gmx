@@ -10,9 +10,12 @@ global.HARD = "hard";
 global.HARDER = "harder";
 global.ADAPTIVEPATTERN = "adaptivepattern";
 global.ADAPTIVELEARNING = "adaptivelearning";
+global.WIN = "win";
+global.TIE = "tie";
+global.LOSE = "lose";
 
 // RPS variables
 global.difficulty = global.ADAPTIVEPATTERN;
 global.playerHistory = "";
-global.winLast = 0;
-global.tieLast = 0;
+global.cpuHistory = "";
+global.lastResult = "";

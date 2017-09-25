@@ -4,4 +4,5 @@ if(mouseOver)
     global.playerHistory = throw + global.playerHistory;
     RPSReturn();
     CheckWin();
+    SpawnResult();
 }

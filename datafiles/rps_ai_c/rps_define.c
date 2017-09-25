@@ -10,6 +10,10 @@ const char HARDER[] = "harder";
 const char ADAPTIVEPATTERN[] = "adaptivepattern";
 const char ADAPTIVELEARNING[] = "adaptivelearning";
 
+const char TIE[] = "tie";
+const char WIN[] = "win";
+const char LOSE[] = "lose";
+
 // Returns a pseudo-random number using the system clock as a seed
 double randnum(int cap)
 {
@@ -20,18 +24,16 @@ double randnum(int cap)
 
 // Returns throw based upon difficulty and player input
 
-GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double winLastIn, double tieLastIn)
+GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * lastResultInput)
 {
-    winLast = winLastIn;
-    tieLast = tieLastIn;
-
     if(strlen(playerInput) == 1)
     {
         rpsThrow[0] = rpsFirst();
-        //return rpsThrow;
+        return rpsThrow;
     }
 
-    cpuLast = setLast(playerInput[0]);
+    cpuLast = cpuHistory[0];
+    setResult(lastResultInput);
 
     if(!(strcmp(HARD, difficulty)))
     {
@@ -47,7 +49,7 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double wi
     }
     else if(!(strcmp(ADAPTIVELEARNING, difficulty)))
     {
-        //rpsThrow[0] = rpsAdaptiveLearning(playerInput);
+        //rpsThrow[0] = rpsAdaptiveLearning(playerInput, cpuHistory);
     }
     else
     {
@@ -55,22 +57,6 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double wi
     }
 
     return rpsThrow;
-}
-
-// Compares last two throws to determine win/loss of last round
-
-char setLast(char playerThrow)
-{
-    if((playerThrow == ROCK && tieLast) || (playerThrow == SCISSORS && winLast) || (playerThrow == PAPER && !(winLast) && !(tieLast)))
-    {
-        return ROCK;
-    }
-    else if((playerThrow == PAPER && tieLast) || (playerThrow == ROCK && winLast) || (playerThrow == SCISSORS && !(winLast) && !(tieLast)))
-    {
-        return PAPER;
-    }
-
-    return SCISSORS;
 }
 
 //------------------------------------------------------ Statistics-based AI ---------------------------------------------------------------//
@@ -92,6 +78,23 @@ char rpsFirst()
     else
     {
         return SCISSORS;
+    }
+}
+
+// Sets global last response variable
+void setResult(char * lastResultInput)
+{
+    if(strcmp(TIE, lastResultInput))
+    {
+        lastResult = "tie";
+    }
+    else if(strcmp(WIN, lastResultInput))
+    {
+        lastResult = "win";
+    }
+    else
+    {
+        lastResult = "lose";
     }
 }
 

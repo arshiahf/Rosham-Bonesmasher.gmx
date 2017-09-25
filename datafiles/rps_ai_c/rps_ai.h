@@ -32,20 +32,23 @@ extern const char HARDER[];
 extern const char ADAPTIVEPATTERN[];
 extern const char ADAPTIVELEARNING[];
 
+extern const char TIE[];
+extern const char WIN[];
+extern const char LOSE[];
+
+char * lastResult;
 char cpuLast;
-double winLast;
-double tieLast;
 char rpsThrow[2];
 
 double randnum(int cap);
 char rpsFirst();
-char setLast(char playerThrow);
+void setResult(char * lastResultInput);
 char clockwiseThrow(char lastThrow);
 char counterclockwiseThrow(char lastThrow);
 char chanceThrow(char lastThrow, double clockwise, double stay, double counterclockwise);
 char rpsNormal(char lastThrow);
 char rpsAdaptivePattern(const char * playerHistory);
 char rpsAdaptiveLearning(const char * playerHistory);
-GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, double winLastIn, double tieLastIn);
+GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * lastResult);
 
 #endif // __RPS_AI_H__

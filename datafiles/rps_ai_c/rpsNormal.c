@@ -4,17 +4,17 @@
 char rpsNormal(char lastThrow)
 {
     // Near-random starting throw
-    if(tieLast && !(winLast))
+    if(strcmp(TIE, lastResult))
     {
         // Clockwise = 142, Stay = 600, Counterclockwise = 252
         return chanceThrow(lastThrow, 142, 600, 252);
     }
-    else if(!(tieLast) && winLast)
+    else if(strcmp(WIN, lastResult))
     {
         // Clockwise = 248, Stay = 567, Counterclockwise = 180
         return chanceThrow(lastThrow, 248, 567, 180);
     }
-    else if(!(tieLast) && !(winLast))
+    else if(strcmp(LOSE, lastResult))
     {
         // Clockwise = 323, Stay = 309, Counterclockwise = 362
         return chanceThrow(lastThrow, 323, 309, 362);

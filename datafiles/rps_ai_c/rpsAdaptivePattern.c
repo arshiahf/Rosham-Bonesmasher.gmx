@@ -2,12 +2,12 @@
 
 char rpsAdaptivePattern(const char * playerHistory)
 {
-    if(strlen(playerHistory) > 3)
+    if(strlen(playerHistory) > 4)
     {
         char playerPatternMatch;
         int patternSize;
 
-        if(strlen(playerHistory) > 7)
+        if(strlen(playerHistory) > 8)
         {
             patternSize = 6;
         }
@@ -18,8 +18,14 @@ char rpsAdaptivePattern(const char * playerHistory)
 
         while(patternSize > 2)
         {
-            char playerPattern[patternSize + 1];
             int p = 0;
+            char playerPattern[patternSize + 1];
+            int tempSize = patternSize + 1;
+            while(tempSize > 0)
+            {
+                playerPattern[tempSize] = '\0';
+                tempSize--;
+            }
             while(p < patternSize && !(playerPatternMatch))
             {
                 playerPattern[p] = playerHistory[p + 1];
@@ -28,8 +34,8 @@ char rpsAdaptivePattern(const char * playerHistory)
 
             if(!(playerPatternMatch))
             {
-                int j = patternSize + 2;
-                while(j < strlen(playerHistory) - 1)
+                int j = patternSize + 1;
+                while(j < strlen(playerHistory))
                 {
                     if(!(playerPatternMatch))
                     {
@@ -67,11 +73,11 @@ char rpsAdaptivePattern(const char * playerHistory)
         }
         else
         {
-            return ' ';//rpsNormal(cpuLast);
+            return rpsNormal(cpuLast);
         }
     }
     else
     {
-        return ' ';//rpsNormal(cpuLast);
+        return rpsNormal(cpuLast);
     }
 }

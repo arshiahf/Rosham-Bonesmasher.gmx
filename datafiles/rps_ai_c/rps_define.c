@@ -24,7 +24,7 @@ double randnum(int cap)
 
 // Returns throw based upon difficulty and player input
 
-GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * lastResultInput)
+GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * resultHistory)
 {
     if(strlen(playerInput) == 1)
     {
@@ -33,7 +33,7 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
     }
 
     cpuLast = cpuHistory[0];
-    setResult(lastResultInput);
+//    setResult(lastResultInput);
 
     if(!(strcmp(HARD, difficulty)))
     {
@@ -97,6 +97,10 @@ void setResult(char * lastResultInput)
         lastResult = "lose";
     }
 }
+
+// Calculates the number of wins, losses, and ties
+
+
 
 // A throw response that moves clockwise on the rock-paper-scissors triangle. This means that the person moves from their last throw to the throw that beat it
 char clockwiseThrow(char lastThrow)

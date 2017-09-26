@@ -36,6 +36,10 @@ extern const char TIE[];
 extern const char WIN[];
 extern const char LOSE[];
 
+double numWin;
+double numLoss;
+double numTie;
+
 char * lastResult;
 char cpuLast;
 char rpsThrow[2];

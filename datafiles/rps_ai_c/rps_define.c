@@ -1,18 +1,30 @@
 #include "rps_ai.h"
 
+// Basic throw concepts
 const char ROCK = 'r';
 const char PAPER = 'p';
 const char SCISSORS = 's';
 const char FIRSTTHROW = 'f';
 
+// Difficulty values
 const char HARD[] = "hard";
 const char HARDER[] = "harder";
 const char ADAPTIVEPATTERN[] = "adaptivepattern";
 const char ADAPTIVELEARNING[] = "adaptivelearning";
 
-const char TIE[] = "tie";
-const char WIN[] = "win";
-const char LOSE[] = "lose";
+// Possible results
+const char TIE = 't';
+const char WIN = 'w';
+const char LOSE = 'l';
+const char ROUNDWIN = 'W';
+const char ROUNDLOSE = 'L';
+
+// Throw values
+const char VERYLOW[] = "vlow";
+const char LOW[] = "low";
+const char MEDIUM[] = "medium";
+const char HIGH[] = "high";
+const char VERYHIGH[] = "vhigh";
 
 // Returns a pseudo-random number using the system clock as a seed
 double randnum(int cap)
@@ -23,6 +35,7 @@ double randnum(int cap)
 }
 
 // Returns throw based upon difficulty and player input
+// resultHistory is the history of the game from the player's perspective
 
 GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * resultHistory)
 {
@@ -33,7 +46,8 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
     }
 
     cpuLast = cpuHistory[0];
-//    setResult(lastResultInput);
+    lastResult = resultHistory[0];
+    setResult(resultHistory);
 
     if(!(strcmp(HARD, difficulty)))
     {
@@ -49,7 +63,7 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
     }
     else if(!(strcmp(ADAPTIVELEARNING, difficulty)))
     {
-        //rpsThrow[0] = rpsAdaptiveLearning(playerInput, cpuHistory);
+        //rpsThrow[0] = rpsAdaptiveLearning(playerInput, cpuHistory, resultHistory);
     }
     else
     {
@@ -81,26 +95,68 @@ char rpsFirst()
     }
 }
 
-// Sets global last response variable
+// Calculates the number of wins, losses, tie, and total throws
 void setResult(char * lastResultInput)
 {
-    if(strcmp(TIE, lastResultInput))
+    int i = 0;
+    while(i < strlen(lastResultInput))
     {
-        lastResult = "tie";
-    }
-    else if(strcmp(WIN, lastResultInput))
-    {
-        lastResult = "win";
-    }
-    else
-    {
-        lastResult = "lose";
+        char tempRes = lastResultInput[i];
+        if(TIE == tempRes)
+        {
+            numTie++;
+        }
+        else if(WIN == tempRes || ROUNDWIN == tempRes)
+        {
+            numWin++;
+        }
+        else
+        {
+            numLoss++;
+        }
+        totalThrows++;
+        i++;
     }
 }
 
-// Calculates the number of wins, losses, and ties
+// Calculates approximate value of throw
 
+const char * throwValue(int toWin, int localWin, int localLoss, int localTie)
+{
+    int localTotal = localWin + localLoss + localTie;
+    int playerToWin = toWin - localWin;
+    int compToWin = toWin - localLoss;
+    int losingLocal = playerToWin < compToWin;
+    int winningLocal = playerToWin > compToWin;
+    int manyThrows = localTotal >= toWin;
+    double localPlayerWinRatio = playerToWin / toWin;
+    double localCompWinRatio = compToWin / toWin;
+    double localTieRatio = localTie / localTotal;
+    double playerWinningRatio = localWin / localTotal;
+    double compWinningRatio = localLoss / localTotal;
 
+    if((manyThrows && losingLocal) || (manyThrows && winningLocal) || (localCompWinRatio > 0.5) || (localPlayerWinRatio > 0.5) || (manyThrows && (localTieRatio > (1/3))) || (losingLocal && (compWinningRatio > 0.25)) || (winningLocal && (playerWinningRatio > 0.25)))
+    {
+       if(1)
+       {
+           if(1)
+           {
+               if (1)
+               {
+                   return VERYHIGH;
+               }
+               return HIGH;
+           }
+           return MEDIUM;
+       }
+       return LOW;
+    }
+    else
+    {
+        return VERYLOW;
+    }
+
+}
 
 // A throw response that moves clockwise on the rock-paper-scissors triangle. This means that the person moves from their last throw to the throw that beat it
 char clockwiseThrow(char lastThrow)
@@ -158,3 +214,4 @@ char chanceThrow(char lastThrow, double clockwise, double stay, double countercl
 
 //------------------------------------------------------ Adaptive AI -----------------------------------------------------------------------//
 
+//

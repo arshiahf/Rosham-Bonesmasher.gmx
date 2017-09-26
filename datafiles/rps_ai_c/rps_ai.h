@@ -22,6 +22,7 @@
     }
 #endif // __cplusplus
 
+// Global constant declaration
 extern const char ROCK;
 extern const char PAPER;
 extern const char SCISSORS;
@@ -32,27 +33,39 @@ extern const char HARDER[];
 extern const char ADAPTIVEPATTERN[];
 extern const char ADAPTIVELEARNING[];
 
-extern const char TIE[];
-extern const char WIN[];
-extern const char LOSE[];
+extern const char TIE;
+extern const char WIN;
+extern const char LOSE;
+extern const char ROUNDWIN;
+extern const char ROUNDLOSE;
 
-double numWin;
-double numLoss;
-double numTie;
+extern const char VERYLOW[];
+extern const char LOW[];
+extern const char MEDIUM[];
+extern const char HIGH[];
+extern const char VERYHIGH[];
 
-char * lastResult;
+// Global variable declaration
+int numWin;
+int numLoss;
+int numTie;
+int totalThrows;
+
+char lastResult;
 char cpuLast;
 char rpsThrow[2];
 
+// Implicit function declaration
 double randnum(int cap);
 char rpsFirst();
 void setResult(char * lastResultInput);
+const char * throwValue(int toWin, int localWin, int localLoss, int localTie);
 char clockwiseThrow(char lastThrow);
 char counterclockwiseThrow(char lastThrow);
 char chanceThrow(char lastThrow, double clockwise, double stay, double counterclockwise);
 char rpsNormal(char lastThrow);
 char rpsAdaptivePattern(const char * playerHistory);
-char rpsAdaptiveLearning(const char * playerHistory);
+char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory);
 GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * lastResult);
 
 #endif // __RPS_AI_H__

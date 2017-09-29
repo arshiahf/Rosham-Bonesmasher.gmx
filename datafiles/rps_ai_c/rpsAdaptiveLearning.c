@@ -40,11 +40,31 @@ void calculateHabitShiftThrowType(const char * playerHistory, const char * resul
     int i = 0;
     while(i < totalThrows)
     {
-        // Rock
+        int historyRock = playerHistory[i - 1] == ROCK;
+        int historyPaper = playerHistory[i - 1] == PAPER;
+        int historyScissors = playerHistory[i - 1] == SCISSORS;
+        int historyNextRock = playerHistory[i] == ROCK;
+        int historyNextPaper = playerHistory[i] == PAPER;
+        int historyNextScissors = playerHistory[i] == SCISSORS;
+        int historyWin = resultHistory[i] == WIN;
+        int historyLose = resultHistory[i] == LOSE;
+        int historyTie = resultHistory[i] == TIE;
+        if(historyRock)
+        {
+            if(historyWin && historyNextRock)
+            {
 
-        // Paper
+            }
+        }
+        else if(historyPaper)
+        {
 
-        // Scissors
+        }
+        else if(historyScissors)
+        {
+
+        }
+        i++;
     }
 }
 

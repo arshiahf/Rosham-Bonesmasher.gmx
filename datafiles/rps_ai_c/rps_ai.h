@@ -26,7 +26,6 @@
 extern const char ROCK;
 extern const char PAPER;
 extern const char SCISSORS;
-extern const char FIRSTTHROW;
 
 extern const char HARD[];
 extern const char HARDER[];
@@ -62,6 +61,7 @@ void setResult(char * lastResultInput);
 const char * throwValue(int toWin, int localWin, int localLoss, int localTie);
 char clockwiseThrow(char lastThrow);
 char counterclockwiseThrow(char lastThrow);
+char oddsShift(char lastThrow, double clockwiseChance, double counterClockwiseChange);
 char chanceThrow(char lastThrow, double clockwise, double stay, double counterclockwise);
 char rpsNormal(char lastThrow);
 char rpsAdaptivePattern(const char * playerHistory);

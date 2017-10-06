@@ -4,7 +4,6 @@
 const char ROCK = 'r';
 const char PAPER = 'p';
 const char SCISSORS = 's';
-const char FIRSTTHROW = 'f';
 
 // Difficulty values
 const char HARD[] = "hard";
@@ -188,6 +187,28 @@ char counterclockwiseThrow(char lastThrow)
     }
 
     return lastThrow;
+}
+
+// Decides if computer changes throw based upon input percentages
+char oddsShift(char lastThrow, double clockwiseChance, double counterClockwiseChance)
+{
+    int shiftYN = randnum(1000);
+
+    int clockwiseLimit = clockwiseChance * 1000;
+    int counterClockwiseLimit = counterClockwiseChance * 1000;
+
+    if(shiftYN <= clockwiseLimit)
+    {
+        return clockwiseThrow(lastThrow);
+    }
+    else if((clockwiseLimit < shiftYN) && (shiftYN <= (clockwiseLimit + counterClockwiseLimit)))
+    {
+        return counterclockwiseThrow(lastThrow);
+    }
+    else
+    {
+        return lastThrow;
+    }
 }
 
 // An algorithm that randomly chooses what kind of throw to use(clockwise, stay, counterclockwise) based upon input statistics

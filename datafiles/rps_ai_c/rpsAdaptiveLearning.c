@@ -5,12 +5,13 @@ const char COUNTERCLOCKWISE = 'C';
 
 
 
-void calculateHabitShift(const char * playerHistory, const char * resultHistory);
+void calculateHabitShift(const char * playerHistory, const char * resultHistory, int *totalThrows);
 const char determineDirection(char init, char second);
 
 char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory)
 {
-    calculateHabitShift(playerHistory, resultHistory);
+    int *totalThrows = 0;
+    calculateHabitShift(playerHistory, resultHistory, totalThrows);
 
     if(0)
     {
@@ -22,23 +23,11 @@ char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, co
     }
 }
 
-void calculateHabitShift(const char * playerHistory, const char * resultHistory)
+void calculateHabitShift(const char * playerHistory, const char * resultHistory, int *totalThrows)
 {
-    int totalRock;
-    int totalPaper;
-    int totalScissors;
-
-    int totalRockWin;
-    int totalRockLose;
-    int totalRockTie;
-
-    int totalPaperWin;
-    int totalPaperLose;
-    int totalPaperTie;
-
-    int totalScissorsWin;
-    int totalScissorsLose;
-    int totalScissorsTie;
+    int totalThrowWin;
+    int totalThrowLose;
+    int totalThrowTie;
 
     int totalClockwiseWin;
     int totalCounterClockwiseWin;
@@ -47,26 +36,12 @@ void calculateHabitShift(const char * playerHistory, const char * resultHistory)
     int totalClockwiseTie;
     int totalCounterClockwiseTie;
 
-    int rockClockwiseWinCount;
-    int rockCounterClockwiseWinCount;
-    int rockClockwiseLoseCount;
-    int rockCounterClockwiseLoseCount;
-    int rockClockwiseTieCount;
-    int rockCounterClockwiseTieCount;
-
-    int paperClockwiseWinCount;
-    int paperCounterClockwiseWinCount;
-    int paperClockwiseLoseCount;
-    int paperCounterClockwiseLoseCount;
-    int paperClockwiseTieCount;
-    int paperCounterClockwiseTieCount;
-
-    int scissorsClockwiseWinCount;
-    int scissorsCounterClockwiseWinCount;
-    int scissorsClockwiseLoseCount;
-    int scissorsCounterClockwiseLoseCount;
-    int scissorsClockwiseTieCount;
-    int scissorsCounterClockwiseTieCount;
+    int throwClockwiseWinCount;
+    int throwCounterClockwiseWinCount;
+    int throwClockwiseLoseCount;
+    int throwCounterClockwiseLoseCount;
+    int throwClockwiseTieCount;
+    int throwCounterClockwiseTieCount;
 
     double clockwiseWin;
     double counterClockwiseWin;
@@ -75,248 +50,96 @@ void calculateHabitShift(const char * playerHistory, const char * resultHistory)
     double clockwiseTie;
     double counterClockwiseTie;
 
-    double rockClockwiseWin;
-    double rockCounterClockwiseWin;
-    double rockClockwiseLose;
-    double rockCounterClockwiseLose;
-    double rockClockwiseTie;
-    double rockCounterClockwiseTie;
-
-    double paperClockwiseWin;
-    double paperCounterClockwiseWin;
-    double paperClockwiseLose;
-    double paperCounterClockwiseLose;
-    double paperClockwiseTie;
-    double paperCounterClockwiseTie;
-
-    double scissorsClockwiseWin;
-    double scissorsCounterClockwiseWin;
-    double scissorsClockwiseLose;
-    double scissorsCounterClockwiseLose;
-    double scissorsClockwiseTie;
-    double scissorsCounterClockwiseTie;
+    double throwClockwiseWin;
+    double throwCounterClockwiseWin;
+    double throwClockwiseLose;
+    double throwCounterClockwiseLose;
+    double throwClockwiseTie;
+    double throwCounterClockwiseTie;
 
     int i = 0;
-    while(i < totalThrows)
+    while(i < strlen(resultHistory))
     {
-        int historyRock = playerHistory[i - 1] == ROCK;
-        int historyPaper = playerHistory[i - 1] == PAPER;
-        int historyScissors = playerHistory[i - 1] == SCISSORS;
-        int historyNextRock = playerHistory[i] == ROCK;
-        int historyNextPaper = playerHistory[i] == PAPER;
-        int historyNextScissors = playerHistory[i] == SCISSORS;
+        int historySame = playerHistory[i + 1] == playerHistory[1];
         int historyWin = resultHistory[i] == WIN;
         int historyLose = resultHistory[i] == LOSE;
         int historyTie = resultHistory[i] == TIE;
-        if(historyRock)
+        if(historyWin)
         {
-            if(historyWin)
+            switch (determineDirection(playerHistory[i + 1], playerHistory[i]))
             {
-                if(historyNextPaper)
-                {
-                    rockCounterClockwiseWinCount++;
-                    totalCounterClockwiseWin++;
-                }
-                else if(historyNextScissors)
-                {
-                    rockClockwiseWinCount++;
+                case 'c':
+                    if(historySame)throwClockwiseWinCount++;
                     totalClockwiseWin++;
-                }
-                totalRockWin++;
-                numWin++;
+                    break;
+                case 'C':
+                    if(historySame)throwCounterClockwiseWinCount++;
+                    totalCounterClockwiseWin++;
+                    break;
+                default:
+                    break;
             }
-            else if(historyLose)
-            {
-                if(historyNextPaper)
-                {
-                    rockCounterClockwiseLoseCount++;
-                    totalCounterClockwiseLose++;
-                }
-                else if(historyNextScissors)
-                {
-                    rockClockwiseLoseCount++;
-                    totalClockwiseLose++;
-                }
-                totalRockLose++;
-                numLoss++;
-            }
-            else if(historyTie)
-            {
-                if(historyNextPaper)
-                {
-                    rockCounterClockwiseTieCount++;
-                    totalCounterClockwiseTie++;
-                }
-                else if(historyNextScissors)
-                {
-                    rockClockwiseTieCount++;
-                    totalClockwiseTie++;
-                }
-                totalRockTie++;
-                numTie++;
-            }
-
-            totalRock++;
+            if(historySame)totalThrowWin++;
+            numWin++;
         }
-        else if(historyPaper)
+        else if(historyLose)
         {
-            if(historyWin)
+            switch (determineDirection(playerHistory[i + 1], playerHistory[i]))
             {
-                if(historyNextRock)
-                {
-                    paperClockwiseWinCount++;
-                    totalClockwiseWin++;
-                }
-                else if(historyNextScissors)
-                {
-                    paperCounterClockwiseWinCount++;
-                    totalCounterClockwiseWin++;
-                }
-                totalPaperWin++;
-                numWin++;
-            }
-            else if(historyLose)
-            {
-                if(historyNextRock)
-                {
-                    paperClockwiseLoseCount++;
+                case 'c':
+                    if(historySame)throwClockwiseLoseCount++;
                     totalClockwiseLose++;
-                }
-                else if(historyNextScissors)
-                {
-                    paperCounterClockwiseLoseCount++;
+                    break;
+                case 'C':
+                    if(historySame)throwCounterClockwiseLoseCount++;
                     totalCounterClockwiseLose++;
-                }
-                totalPaperLose++;
-                numLoss++;
+                    break;
+                default:
+                    break;
             }
-            else if(historyTie)
-            {
-                if(historyNextRock)
-                {
-                    paperClockwiseTieCount++;
-                    totalClockwiseTie++;
-                }
-                else if(historyNextScissors)
-                {
-                    paperCounterClockwiseTieCount++;
-                    totalCounterClockwiseTie++;
-                }
-                totalPaperTie++;
-                numTie++;
-            }
-
-            totalPaper++;
+            if(historySame)totalThrowLose++;
+            numLoss++;
         }
-        else if(historyScissors)
+        else if(historyTie)
         {
-            if(historyWin)
+            switch (determineDirection(playerHistory[i + 1], playerHistory[i]))
             {
-                if(historyNextRock)
-                {
-                    scissorsCounterClockwiseWinCount++;
-                    totalCounterClockwiseWin++;
-                }
-                else if(historyNextPaper)
-                {
-                    scissorsClockwiseWinCount++;
-                    totalClockwiseWin++;
-                }
-                totalScissorsWin++;
-                numWin++;
-            }
-            else if(historyLose)
-            {
-                if(historyNextRock)
-                {
-                    scissorsCounterClockwiseLoseCount++;
-                    totalCounterClockwiseLose++;
-                }
-                else if(historyNextPaper)
-                {
-                    scissorsClockwiseLoseCount++;
-                    totalClockwiseLose++;
-                }
-                totalScissorsLose++;
-                numLoss++;
-            }
-            else if(historyTie)
-            {
-                if(historyNextRock)
-                {
-                    scissorsCounterClockwiseTieCount++;
-                    totalCounterClockwiseTie++;
-                }
-                else if(historyNextPaper)
-                {
-                    scissorsClockwiseTieCount++;
+                case 'c':
+                    if(historySame)throwClockwiseTieCount++;
                     totalClockwiseTie++;
-                }
-                totalScissorsTie++;
-                numTie++;
+                    break;
+                case 'C':
+                    if(historySame)throwCounterClockwiseTieCount++;
+                    totalCounterClockwiseTie++;
+                    break;
+                default:
+                    break;
             }
-
-            totalScissors++;
+            if(historySame)totalThrowTie++;
+            numTie++;
         }
-        totalThrows++;
+
+        *totalThrows++;
         i++;
     }
 
-    //Calculate chances you shift from rock
-    if(totalRockWin)
+    //Calculate chances you shift from throw
+    if(totalThrowWin)
     {
-        rockClockwiseWin = rockClockwiseWinCount / totalRockWin;
-        rockCounterClockwiseWin = rockCounterClockwiseWinCount / totalRockWin;
+        throwClockwiseWin = throwClockwiseWinCount / totalThrowWin;
+        throwCounterClockwiseWin = throwCounterClockwiseWinCount / totalThrowWin;
     }
 
-    if(totalRockLose)
+    if(totalThrowLose)
     {
-        rockClockwiseLose = rockClockwiseLoseCount / totalRockLose;
-        rockCounterClockwiseLose = rockCounterClockwiseLoseCount / totalRockLose;
+        throwClockwiseLose = throwClockwiseLoseCount / totalThrowLose;
+        throwCounterClockwiseLose = throwCounterClockwiseLoseCount / totalThrowLose;
     }
 
-    if(totalRockTie)
+    if(totalThrowTie)
     {
-        rockClockwiseTie = rockClockwiseTieCount / totalRockTie;
-        rockCounterClockwiseTie = rockCounterClockwiseTieCount / totalRockTie;
-    }
-
-    //Calculates chances you shift from paper
-    if(totalPaperWin)
-    {
-        paperClockwiseWin = paperClockwiseWinCount / totalPaperWin;
-        paperCounterClockwiseWin = paperCounterClockwiseWinCount / totalPaperWin;
-    }
-
-    if(totalPaperLose)
-    {
-        paperClockwiseLose = paperClockwiseLoseCount / totalPaperLose;
-        paperCounterClockwiseLose = paperCounterClockwiseLoseCount / totalPaperLose;
-    }
-
-    if(totalPaperTie)
-    {
-        paperClockwiseTie = paperClockwiseTieCount / totalPaperTie;
-        paperCounterClockwiseTie = paperCounterClockwiseTieCount / totalPaperTie;
-    }
-
-    //Calculates chances you shift from scissors
-    if(totalScissorsWin)
-    {
-        scissorsClockwiseWin = scissorsClockwiseWinCount / totalScissorsWin;
-        scissorsCounterClockwiseWin = scissorsCounterClockwiseWinCount / totalScissorsWin;
-    }
-
-    if(totalScissorsLose)
-    {
-        scissorsClockwiseLose = scissorsClockwiseLoseCount / totalScissorsLose;
-        scissorsCounterClockwiseLose = scissorsCounterClockwiseLoseCount / totalScissorsLose;
-    }
-
-    if(totalScissorsTie)
-    {
-        scissorsClockwiseTie = scissorsClockwiseTieCount / totalScissorsTie;
-        scissorsCounterClockwiseTie = scissorsCounterClockwiseTieCount / totalScissorsTie;
+        throwClockwiseTie = throwClockwiseTieCount / totalThrowTie;
+        throwCounterClockwiseTie = throwCounterClockwiseTieCount / totalThrowTie;
     }
 
     //Calculate overall shift chances

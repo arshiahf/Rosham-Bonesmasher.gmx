@@ -1,41 +1,17 @@
 #include "rps_ai.h"
 
-const char CLOCKWISE[] = "clockwise";
-const char COUNTERCLOCKWISE[] = "counterclockwise";
+const char CLOCKWISE = 'c';
+const char COUNTERCLOCKWISE = 'C';
 
-double clockwiseWin;
-double counterClockwiseWin;
-double clockwiseLose;
-double counterClockwiseLose;
-double clockwiseTie;
-double counterClockwiseTie;
 
-double rockClockwiseWin;
-double rockCounterClockwiseWin;
-double rockClockwiseLose;
-double rockCounterClockwiseLose;
-double rockClockwiseTie;
-double rockCounterClockwiseTie;
 
-double paperClockwiseWin;
-double paperCounterClockwiseWin;
-double paperClockwiseLose;
-double paperCounterClockwiseLose;
-double paperClockwiseTie;
-double paperCounterClockwiseTie;
-
-double scissorsClockwiseWin;
-double scissorsCounterClockwiseWin;
-double scissorsClockwiseLose;
-double scissorsCounterClockwiseLose;
-double scissorsClockwiseTie;
-double scissorsCounterClockwiseTie;
-
-void calculateHabitShiftThrowType(const char * playerHistory, const char * resultHistory);
-const char * determineDirection(char init, char second);
+void calculateHabitShift(const char * playerHistory, const char * resultHistory);
+const char determineDirection(char init, char second);
 
 char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory)
 {
+    calculateHabitShift(playerHistory, resultHistory);
+
     if(0)
     {
 
@@ -91,6 +67,34 @@ void calculateHabitShift(const char * playerHistory, const char * resultHistory)
     int scissorsCounterClockwiseLoseCount;
     int scissorsClockwiseTieCount;
     int scissorsCounterClockwiseTieCount;
+
+    double clockwiseWin;
+    double counterClockwiseWin;
+    double clockwiseLose;
+    double counterClockwiseLose;
+    double clockwiseTie;
+    double counterClockwiseTie;
+
+    double rockClockwiseWin;
+    double rockCounterClockwiseWin;
+    double rockClockwiseLose;
+    double rockCounterClockwiseLose;
+    double rockClockwiseTie;
+    double rockCounterClockwiseTie;
+
+    double paperClockwiseWin;
+    double paperCounterClockwiseWin;
+    double paperClockwiseLose;
+    double paperCounterClockwiseLose;
+    double paperClockwiseTie;
+    double paperCounterClockwiseTie;
+
+    double scissorsClockwiseWin;
+    double scissorsCounterClockwiseWin;
+    double scissorsClockwiseLose;
+    double scissorsCounterClockwiseLose;
+    double scissorsClockwiseTie;
+    double scissorsCounterClockwiseTie;
 
     int i = 0;
     while(i < totalThrows)
@@ -335,7 +339,7 @@ void calculateHabitShift(const char * playerHistory, const char * resultHistory)
     }
 }
 
-const char * determineDirection(char init, char second)
+const char determineDirection(char init, char second)
 {
     int rockInit = (init == ROCK);
     int paperInit = (init == PAPER);
@@ -353,6 +357,6 @@ const char * determineDirection(char init, char second)
     }
     else
     {
-        return "";
+        return 0;
     }
 }

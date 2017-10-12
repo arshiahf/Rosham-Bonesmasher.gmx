@@ -5,26 +5,39 @@ const char COUNTERCLOCKWISE = 'C';
 
 
 
-void calculateHabitShift(const char * playerHistory, const char * resultHistory, int *totalThrows);
+int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int *totalThrows, int *absoluteThrows);
 const char determineDirection(char init, char second);
+char decideThrow(int clockwiseChance);
 
 char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory)
 {
     int *totalThrows = 0;
-    calculateHabitShift(playerHistory, resultHistory, totalThrows);
 
-    if(0)
-    {
+    // Win Cw, Win CCw, Lose Cw, Lose CCw, Tie Cw, Tie CCw
+    int *absoluteThrows;
 
-    }
-    else
+    absoluteThrows = calculateHabitShift(playerHistory, resultHistory, totalThrows, absoluteThrows);
+
+    switch(resultHistory[0])
     {
-        return rpsNormal(cpuLast);
+        case 'w':
+        case 'W':
+
+            break;
+        case 'l':
+        case 'L':
+            break;
+        case 't':
+            break;
+        default:
+            return rpsNormal(cpuHistory[1]);
     }
 }
 
-void calculateHabitShift(const char * playerHistory, const char * resultHistory, int *totalThrows)
+int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int *totalThrows, int *absoluteThrows)
 {
+    int *absThrows = (int*)malloc(6 * sizeof(int));
+
     int totalThrowWin;
     int totalThrowLose;
     int totalThrowTie;
@@ -61,8 +74,8 @@ void calculateHabitShift(const char * playerHistory, const char * resultHistory,
     while(i < strlen(resultHistory))
     {
         int historySame = playerHistory[i + 1] == playerHistory[1];
-        int historyWin = resultHistory[i] == WIN;
-        int historyLose = resultHistory[i] == LOSE;
+        int historyWin = resultHistory[i] == WIN || resultHistory[i] == ROUNDWIN;
+        int historyLose = resultHistory[i] == LOSE || resultHistory[i] == ROUNDLOSE;
         int historyTie = resultHistory[i] == TIE;
         if(historyWin)
         {
@@ -160,6 +173,40 @@ void calculateHabitShift(const char * playerHistory, const char * resultHistory,
         clockwiseTie = totalClockwiseTie / numTie;
         counterClockwiseTie = totalCounterClockwiseTie / numTie;
     }
+
+    // Calculate absolute shift chance
+
+    if(clockwiseWin && throwClockwiseWin)
+    {
+        absThrows[0] = (int) 1000 * (clockwiseWin + throwClockwiseWin) / 2;
+    }
+
+    if(counterClockwiseWin && throwCounterClockwiseWin)
+    {
+        absThrows[1] = (int) 1000 * (counterClockwiseWin + throwCounterClockwiseWin) / 2;
+    }
+
+    if(clockwiseLose && throwClockwiseLose)
+    {
+        absThrows[2] = (int) 1000 * (clockwiseLose + throwClockwiseLose) / 2;
+    }
+
+    if(counterClockwiseLose && throwCounterClockwiseLose)
+    {
+        absThrows[3] = (int) 1000 * (counterClockwiseLose + throwCounterClockwiseLose) / 2;
+    }
+
+    if(clockwiseTie && throwClockwiseTie)
+    {
+        absThrows[4] = (int) 1000 * (clockwiseTie + throwClockwiseTie) / 2;
+    }
+
+    if(counterClockwiseTie && throwCounterClockwiseTie)
+    {
+        absThrows[5] = (int) 1000 * (counterClockwiseTie + throwCounterClockwiseTie) / 2;
+    }
+
+    return absThrows;
 }
 
 const char determineDirection(char init, char second)

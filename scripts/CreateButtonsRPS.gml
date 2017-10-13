@@ -4,7 +4,7 @@ if instance_exists(rpsGeneric)
     {
         with instance_find(rpsGeneric, i)
         {
-            virtual_key_add(x, y, sprite_width, sprite_height, buttonKey)
+            virtual_key_add(x - sprite_width / 2 - 1, y - sprite_height / 2 - 1, sprite_width - 2, sprite_height - 2, buttonKey)
         }
     }
 }

@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
+  <datafiles number="12" name="datafiles">
     <datafile>
-      <name>roshambonesmasher.dll</name>
+      <name>rps_ai_c.dll</name>
       <exists>-1</exists>
-      <size>27101</size>
+      <size>37535</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -19,7 +19,7 @@
           <CopyToMask>9223372036854775807</CopyToMask>
         </Config>
       </ConfigOptions>
-      <filename>roshambonesmasher.dll</filename>
+      <filename>rps_ai_c.dll</filename>
     </datafile>
   </datafiles>
   <NewExtensions/>
@@ -45,7 +45,20 @@
           <sprite>sprites\punchPressed</sprite>
           <sprite>sprites\smash</sprite>
           <sprite>sprites\smashPressed</sprite>
+          <sprite>sprites\rock</sprite>
+          <sprite>sprites\rockPressed</sprite>
+          <sprite>sprites\paper</sprite>
+          <sprite>sprites\paperPressed</sprite>
+          <sprite>sprites\scissors</sprite>
+          <sprite>sprites\scissorsPressed</sprite>
         </sprites>
+      </sprites>
+      <sprites name="Notification">
+        <sprite>sprites\throwWin</sprite>
+        <sprite>sprites\throwLose</sprite>
+        <sprite>sprites\throwTie</sprite>
+        <sprite>sprites\roundWin</sprite>
+        <sprite>sprites\roundLose</sprite>
       </sprites>
     </sprites>
   </sprites>
@@ -53,10 +66,18 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\InheritEvents.gml</script>
-    <script>scripts\ClickButton.gml</script>
     <script>scripts\CreateButtonsRPS.gml</script>
+    <script>scripts\InitRPS.gml</script>
+    <script>scripts\InitVariables.gml</script>
+    <script>scripts\RPSReturn.gml</script>
+    <script>scripts\CheckWin.gml</script>
+    <script>scripts\KeyboardPress.gml</script>
+    <script>scripts\MouseClick.gml</script>
+    <script>scripts\MouseOver.gml</script>
+    <script>scripts\SpawnResult.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\initialize</object>
     <object>objects\objectGeneric</object>
     <objects name="Living">
       <object>objects\livingGeneric</object>
@@ -82,10 +103,16 @@
         <object>objects\buttonGeneric</object>
         <objects name="RPS">
           <object>objects\rpsGeneric</object>
-          <object>objects\ram0</object>
-          <object>objects\punch0</object>
-          <object>objects\smash0</object>
+          <object>objects\rock0</object>
+          <object>objects\paper0</object>
+          <object>objects\scissors0</object>
         </objects>
+      </objects>
+      <objects name="Notifications">
+        <object>objects\notificationGeneric</object>
+        <object>objects\throwWin0</object>
+        <object>objects\throwLose0</object>
+        <object>objects\throwTie0</object>
       </objects>
     </objects>
   </objects>

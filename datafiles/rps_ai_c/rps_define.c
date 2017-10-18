@@ -212,10 +212,10 @@ char oddsShift(char lastThrow, double clockwiseChance, double counterClockwiseCh
 }
 
 // An algorithm that randomly chooses what kind of throw to use(clockwise, stay, counterclockwise) based upon input statistics
-char chanceThrow(char lastThrow, double clockwise, double stay, double counterclockwise)
+char chanceThrow(char lastThrow, double clockwise, double counterclockwise)
 {
-    double total = clockwise + stay + counterclockwise;
-    double newThrow = randnum(total);
+    double stay = 1000 - (clockwise + counterclockwise);
+    double newThrow = randnum(1000);
 
     if(newThrow <= clockwise) // Throws clockwise
     {

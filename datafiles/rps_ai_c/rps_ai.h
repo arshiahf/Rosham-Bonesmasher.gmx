@@ -62,7 +62,7 @@ const char * throwValue(int toWin, int localWin, int localLoss, int localTie);
 char clockwiseThrow(char lastThrow);
 char counterclockwiseThrow(char lastThrow);
 char oddsShift(char lastThrow, double clockwiseChance, double counterClockwiseChange);
-char chanceThrow(char lastThrow, double clockwise, double stay, double counterclockwise);
+char chanceThrow(char lastThrow, double clockwise, double counterclockwise);
 char rpsNormal(char lastThrow);
 char rpsAdaptivePattern(const char * playerHistory);
 char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory);

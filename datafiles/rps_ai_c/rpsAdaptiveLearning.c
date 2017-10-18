@@ -22,7 +22,7 @@ char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, co
     {
         case 'w':
         case 'W':
-
+//            chanceThrow(playerHistory[1], )
             break;
         case 'l':
         case 'L':

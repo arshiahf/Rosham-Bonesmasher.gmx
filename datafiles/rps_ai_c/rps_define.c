@@ -38,6 +38,8 @@ double randnum(int cap)
 
 GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * resultHistory)
 {
+    rpsThrow[1] = 0;
+
     if(strlen(playerInput) == 1)
     {
         rpsThrow[0] = rpsFirst();
@@ -46,14 +48,15 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
 
     cpuLast = cpuHistory[0];
     lastResult = resultHistory[0];
-    setResult(resultHistory);
 
     if(!(strcmp(HARD, difficulty)))
     {
+        //setResult(resultHistory);
         //rpsThrow[0] = rpsHard(cpuLast);
     }
     else if(!(strcmp(HARDER, difficulty)))
     {
+        //setResult(resultHistory);
         //rpsThrow[0] = rpsHarder(cpuLast);
     }
     else if(!(strcmp(ADAPTIVEPATTERN, difficulty)))
@@ -62,7 +65,7 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
     }
     else if(!(strcmp(ADAPTIVELEARNING, difficulty)))
     {
-        //rpsThrow[0] = rpsAdaptiveLearning(playerInput, cpuHistory, resultHistory);
+        rpsThrow[0] = rpsAdaptiveLearning(playerInput, cpuHistory, resultHistory);
     }
     else
     {
@@ -187,28 +190,6 @@ char counterclockwiseThrow(char lastThrow)
     }
 
     return lastThrow;
-}
-
-// Decides if computer changes throw based upon input percentages
-char oddsShift(char lastThrow, double clockwiseChance, double counterClockwiseChance)
-{
-    int shiftYN = randnum(1000);
-
-    int clockwiseLimit = clockwiseChance * 1000;
-    int counterClockwiseLimit = counterClockwiseChance * 1000;
-
-    if(shiftYN <= clockwiseLimit)
-    {
-        return clockwiseThrow(lastThrow);
-    }
-    else if((clockwiseLimit < shiftYN) && (shiftYN <= (clockwiseLimit + counterClockwiseLimit)))
-    {
-        return counterclockwiseThrow(lastThrow);
-    }
-    else
-    {
-        return lastThrow;
-    }
 }
 
 // An algorithm that randomly chooses what kind of throw to use(clockwise, stay, counterclockwise) based upon input statistics

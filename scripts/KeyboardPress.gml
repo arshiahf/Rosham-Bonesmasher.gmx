@@ -3,4 +3,5 @@ if(keyboard_check_pressed(buttonKey) and os_type != os_ios and os_type != os_and
     global.playerHistory = throw + global.playerHistory;
     RPSReturn();
     CheckWin();
+    SpawnResult();
 }

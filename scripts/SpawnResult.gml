@@ -1,8 +1,12 @@
-if(global.lastResult == global.TIE)
+lastResult = string_char_at(global.resultHistory, 1);
+
+show_debug_message("Last result is: " + lastResult);
+
+if(lastResult == global.TIE)
 {
     instance = instance_create(x, y, throwTie0);
 }
-else if(global.lastResult == global.WIN)
+else if(lastResult == global.WIN)
 {
     instance = instance_create(x, y, throwWin0);    
 }

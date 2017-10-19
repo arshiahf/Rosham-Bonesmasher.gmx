@@ -5,36 +5,50 @@ const char COUNTERCLOCKWISE = 'C';
 
 
 
-int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int *totalThrows, int *absoluteThrows);
+int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int totalThrows, int *absoluteThrows);
 const char determineDirection(char init, char second);
 char decideThrow(int clockwiseChance);
 
 char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory)
 {
-    int *totalThrows = 0;
+    int totalThrows = 0;
+    char returnthrow;
 
     // Win Cw, Win CCw, Lose Cw, Lose CCw, Tie Cw, Tie CCw
-    int *absoluteThrows;
-
+    int *absoluteThrows = (int*)malloc(6 * sizeof(int));
     absoluteThrows = calculateHabitShift(playerHistory, resultHistory, totalThrows, absoluteThrows);
 
-    switch(resultHistory[0])
+    if(resultHistory[0])
     {
-        case 'w':
-        case 'W':
-//            chanceThrow(playerHistory[1], )
-            break;
-        case 'l':
-        case 'L':
-            break;
-        case 't':
-            break;
-        default:
-            return rpsNormal(cpuHistory[1]);
+        switch(resultHistory[0])
+        {
+            case 'w':
+            case 'W':
+                returnthrow = chanceThrow(playerHistory[1], absoluteThrows[0], absoluteThrows[1]);
+                break;
+            case 'l':
+            case 'L':
+                returnthrow = chanceThrow(playerHistory[1], absoluteThrows[2], absoluteThrows[3]);
+                break;
+            case 't':
+                returnthrow = chanceThrow(playerHistory[1], absoluteThrows[4], absoluteThrows[5]);
+                break;
+            default:
+                free(absoluteThrows);
+                return rpsNormal(cpuHistory[0]);
+        }
+        free(absoluteThrows);
+        return counterclockwiseThrow(returnthrow);
+
+    }
+    else
+    {
+        free(absoluteThrows);
+        return rpsNormal(cpuHistory[0]);
     }
 }
 
-int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int *totalThrows, int *absoluteThrows)
+int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int totalThrows, int *absoluteThrows)
 {
     int *absThrows = (int*)malloc(6 * sizeof(int));
 
@@ -132,7 +146,7 @@ int* calculateHabitShift(const char *playerHistory, const char *resultHistory, i
             numTie++;
         }
 
-        *totalThrows++;
+        totalThrows++;
         i++;
     }
 

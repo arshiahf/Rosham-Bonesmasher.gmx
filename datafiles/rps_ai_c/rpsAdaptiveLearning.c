@@ -8,11 +8,13 @@ const char COUNTERCLOCKWISE = 'C';
 int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int totalThrows, int *absoluteThrows);
 const char determineDirection(char init, char second);
 char decideThrow(int clockwiseChance);
+const char learningThrow(char lastThrow, int clockwise, int counterClockwise);
 
 char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory)
 {
     int totalThrows = 0;
     char returnthrow;
+    char playerLast = playerHistory[1];
 
     // Win Cw, Win CCw, Lose Cw, Lose CCw, Tie Cw, Tie CCw
     int *absoluteThrows = (int*)malloc(6 * sizeof(int));
@@ -24,14 +26,14 @@ char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, co
         {
             case 'w':
             case 'W':
-                returnthrow = chanceThrow(playerHistory[1], absoluteThrows[0], absoluteThrows[1]);
+                returnthrow = learningThrow(playerLast, absoluteThrows[0], absoluteThrows[1]);
                 break;
             case 'l':
             case 'L':
-                returnthrow = chanceThrow(playerHistory[1], absoluteThrows[2], absoluteThrows[3]);
+                returnthrow = learningThrow(playerLast, absoluteThrows[2], absoluteThrows[3]);
                 break;
             case 't':
-                returnthrow = chanceThrow(playerHistory[1], absoluteThrows[4], absoluteThrows[5]);
+                returnthrow = learningThrow(playerLast, absoluteThrows[4], absoluteThrows[5]);
                 break;
             default:
                 free(absoluteThrows);
@@ -244,3 +246,10 @@ const char determineDirection(char init, char second)
         return 0;
     }
 }
+
+const char learningThrow(char lastThrow, int clockwise, int counterClockwise)
+{
+    int stay = 1000 - (clockwise + counterClockwise);
+    return counterclockwiseThrow(lastThrow);
+}
+

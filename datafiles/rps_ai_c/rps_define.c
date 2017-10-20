@@ -26,10 +26,10 @@ const char HIGH[] = "high";
 const char VERYHIGH[] = "vhigh";
 
 // Returns a pseudo-random number using the system clock as a seed
-double randnum(int cap)
+int randnum(int cap)
 {
     srand(clock());
-    double num = rand() % cap + 1;
+    int num = rand() % cap + 1;
     return num;
 }
 
@@ -193,10 +193,10 @@ char counterclockwiseThrow(char lastThrow)
 }
 
 // An algorithm that randomly chooses what kind of throw to use(clockwise, stay, counterclockwise) based upon input statistics
-char chanceThrow(char lastThrow, double clockwise, double counterclockwise)
+char chanceThrow(char lastThrow, int clockwise, int counterclockwise)
 {
-    double stay = 1000 - (clockwise + counterclockwise);
-    double newThrow = randnum(1000);
+    int stay = 1000 - (clockwise + counterclockwise);
+    int newThrow = randnum(1000);
 
     if(newThrow <= clockwise) // Throws clockwise
     {

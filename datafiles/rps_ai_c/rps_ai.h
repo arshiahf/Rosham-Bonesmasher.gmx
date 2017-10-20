@@ -55,13 +55,13 @@ char cpuLast;
 char rpsThrow[2];
 
 // Implicit function declaration
-double randnum(int cap);
+int randnum(int cap);
 char rpsFirst();
 void setResult(char * lastResultInput);
 const char * throwValue(int toWin, int localWin, int localLoss, int localTie);
 char clockwiseThrow(char lastThrow);
 char counterclockwiseThrow(char lastThrow);
-char chanceThrow(char lastThrow, double clockwise, double counterclockwise);
+char chanceThrow(char lastThrow, int clockwise, int counterclockwise);
 char rpsNormal(char lastThrow);
 char rpsAdaptivePattern(const char * playerHistory);
 char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory);

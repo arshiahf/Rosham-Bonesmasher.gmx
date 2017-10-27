@@ -250,6 +250,84 @@ const char determineDirection(char init, char second)
 const char learningThrow(char lastThrow, int clockwise, int counterClockwise)
 {
     int stay = 1000 - (clockwise + counterClockwise);
-    return counterclockwiseThrow(lastThrow);
+    int highest = stay;
+    char bestThrow = lastThrow;
+    int stayClockwise = stay >= clockwise - 5 || stay <= clockwise + 5;
+    int stayCounter = stay >= counterClockwise - 5 || stay <= counterClockwise + 5;
+    int clockwiseCounter = clockwise >= counterClockwise - 5 || clockwise <= counterClockwise + 5;
+    int allSame = stayClockwise && stayCounter && clockwiseCounter;
+
+    if(clockwise > highest)
+    {
+        highest = clockwise;
+        bestThrow = clockwiseThrow(lastThrow);
+    }
+    if(counterClockwise > highest)
+    {
+        highest = counterClockwise;
+        bestThrow = counterclockwiseThrow(lastThrow);
+    }
+    if(allSame)
+    {
+        int which = randnum(3);
+        if(which == 1)
+        {
+            //Choose clockwise
+            bestThrow = clockwiseThrow(lastThrow);
+        }
+        else if(which == 2)
+        {
+            //Choose counterclockwise
+            bestThrow = counterclockwiseThrow(lastThrow);
+        }
+        else
+        {
+            //Choose stay
+            bestThrow = lastThrow;
+        }
+    }
+    else if(stayClockwise)
+    {
+        int which = randnum(2);
+        if(which == 1)
+        {
+            //Choose clockwise
+            bestThrow = clockwiseThrow(lastThrow);
+        }
+        else
+        {
+            //Choose stay
+            bestThrow = lastThrow;
+        }
+    }
+    else if(stayCounter)
+    {
+        int which = randnum(2);
+        if(which == 1)
+        {
+            //Choose counterclockwise
+            bestThrow = counterclockwiseThrow(lastThrow);
+        }
+        else
+        {
+            //Choose stay
+            bestThrow = lastThrow;
+        }
+    }
+    else if(clockwiseCounter)
+    {
+        int which = randnum(2);
+        if(which == 1)
+        {
+            //Choose clockwise
+            bestThrow = clockwiseThrow(lastThrow);
+        }
+        else
+        {
+            //Choose counterclockwise
+            bestThrow = counterclockwiseThrow(lastThrow);
+        }
+    }
+    return counterclockwiseThrow(bestThrow);
 }
 

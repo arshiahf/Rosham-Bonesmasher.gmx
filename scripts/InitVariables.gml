@@ -18,4 +18,5 @@ global.LOSE = "l";
 global.difficulty = global.ADAPTIVELEARNING;
 global.playerHistory = "";
 global.cpuHistory = "";
-global.resultHistory = "";
+global.playerResultHistory = "";
+global.cpuResultHistory = "";

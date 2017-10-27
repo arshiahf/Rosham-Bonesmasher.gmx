@@ -3,7 +3,8 @@ cpuThrow = string_char_at(global.cpuHistory, 1);
 
 if(playerThrow == cpuThrow)
 {
-    global.resultHistory = global.TIE + global.resultHistory;
+    global.playerResultHistory = global.TIE + global.resultHistory;
+    global.cpuResultHistory = global.TIE + global.resultHistory;
     show_debug_message(global.cpuHistory);
     show_debug_message(cpuThrow);
     show_debug_message("You Tied");
@@ -14,7 +15,8 @@ if(playerThrow == cpuThrow)
 }
 else if(playerThrow == global.ROCK and cpuThrow == global.SCISSORS or playerThrow == global.PAPER and cpuThrow == global.ROCK or playerThrow == global.SCISSORS and cpuThrow == global.PAPER)
 {
-    global.resultHistory = global.WIN + global.resultHistory;
+    global.playerResultHistory = global.WIN + global.resultHistory;
+    global.cpuResultHistory = global.LOSE + global.resultHistory;
     show_debug_message(global.cpuHistory);
     show_debug_message(cpuThrow);
     show_debug_message("You Won");
@@ -23,7 +25,8 @@ else if(playerThrow == global.ROCK and cpuThrow == global.SCISSORS or playerThro
     show_debug_message(global.difficulty);
     exit;
 }
-global.resultHistory = global.LOSE + global.resultHistory;
+global.playerResultHistory = global.LOSE + global.resultHistory;
+global.cpuResultHistory = global.WIN + global.resultHistory;
 show_debug_message(global.cpuHistory);
 show_debug_message(cpuThrow);
 show_debug_message("You Lose");

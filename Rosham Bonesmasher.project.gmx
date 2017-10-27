@@ -69,7 +69,8 @@
     <script>scripts\CreateButtonsRPS.gml</script>
     <script>scripts\InitRPS.gml</script>
     <script>scripts\InitVariables.gml</script>
-    <script>scripts\RPSReturn.gml</script>
+    <script>scripts\PlayerRPSReturn.gml</script>
+    <script>scripts\CPURPSReturn.gml</script>
     <script>scripts\CheckWin.gml</script>
     <script>scripts\KeyboardPress.gml</script>
     <script>scripts\MouseClick.gml</script>

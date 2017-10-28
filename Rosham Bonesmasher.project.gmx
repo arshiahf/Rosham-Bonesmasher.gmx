@@ -76,6 +76,7 @@
     <script>scripts\MouseClick.gml</script>
     <script>scripts\MouseOver.gml</script>
     <script>scripts\SpawnResult.gml</script>
+    <script>scripts\CPUvsCPU.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\initialize</object>

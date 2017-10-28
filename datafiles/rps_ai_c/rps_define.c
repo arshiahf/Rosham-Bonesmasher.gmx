@@ -87,7 +87,7 @@ char rpsFirst()
     {
         return ROCK;
     }
-    else if(37 < firstThrow && firstThrow <= 71)
+    else if(firstThrow <= 71)
     {
         return PAPER;
     }

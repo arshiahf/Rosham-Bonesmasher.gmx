@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>InheritEvents();
+            <string>throw = global.SCISSORS;
+InheritEvents();
 buttonKey = global.SCISSORSBUTTON;
 regularSprite = scissors;
 pressedSprite = scissorsPressed;
-throw = global.SCISSORS;
 </string>
           </argument>
         </arguments>

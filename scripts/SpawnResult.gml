@@ -1,4 +1,4 @@
-lastResult = string_char_at(global.resultHistory, 1);
+lastResult = string_char_at(global.playerResultHistory, 1);
 
 show_debug_message("Last result is: " + lastResult);
 

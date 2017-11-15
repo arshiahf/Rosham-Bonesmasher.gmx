@@ -20,3 +20,10 @@ global.playerHistory = "";
 global.cpuHistory = "";
 global.playerResultHistory = "";
 global.cpuResultHistory = "";
+
+// Number Trackers
+global.playerWins = 0;
+global.cpuWins = 0;
+global.cpuvscpuRounds = 100;
+global.patternWins = 0;
+global.learningWins = 0;

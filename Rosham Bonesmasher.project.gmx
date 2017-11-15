@@ -76,7 +76,11 @@
     <script>scripts\MouseClick.gml</script>
     <script>scripts\MouseOver.gml</script>
     <script>scripts\SpawnResult.gml</script>
-    <script>scripts\CPUvsCPU.gml</script>
+    <scripts name="Buttons">
+      <script>scripts\RPSExecute.gml</script>
+      <script>scripts\CPUvsCPU.gml</script>
+      <script>scripts\StressTest.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\initialize</object>
@@ -109,6 +113,7 @@
           <object>objects\paper0</object>
           <object>objects\scissors0</object>
         </objects>
+        <object>objects\cpuPlay</object>
       </objects>
       <objects name="Notifications">
         <object>objects\notificationGeneric</object>

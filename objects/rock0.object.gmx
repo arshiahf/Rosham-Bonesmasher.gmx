@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>InheritEvents();
+            <string>throw = global.ROCK;
+InheritEvents();
 buttonKey = global.ROCKBUTTON;
 regularSprite = rock;
 pressedSprite = rockPressed;
-throw = global.ROCK;
 </string>
           </argument>
         </arguments>

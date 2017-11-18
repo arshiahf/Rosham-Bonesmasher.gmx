@@ -66,20 +66,26 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\InheritEvents.gml</script>
-    <script>scripts\CreateButtonsRPS.gml</script>
-    <script>scripts\InitRPS.gml</script>
-    <script>scripts\InitVariables.gml</script>
-    <script>scripts\PlayerRPSReturn.gml</script>
-    <script>scripts\CPURPSReturn.gml</script>
-    <script>scripts\CheckWin.gml</script>
-    <script>scripts\KeyboardPress.gml</script>
-    <script>scripts\MouseClick.gml</script>
-    <script>scripts\MouseOver.gml</script>
-    <script>scripts\SpawnResult.gml</script>
+    <scripts name="Initialization">
+      <script>scripts\InitVariables.gml</script>
+      <script>scripts\InitRPS.gml</script>
+    </scripts>
     <scripts name="Buttons">
+      <script>scripts\CreateButtonsRPS.gml</script>
       <script>scripts\RPSExecute.gml</script>
       <script>scripts\CPUvsCPU.gml</script>
       <script>scripts\StressTest.gml</script>
+    </scripts>
+    <scripts name="RPS">
+      <script>scripts\CPURPSReturn.gml</script>
+      <script>scripts\PlayerRPSReturn.gml</script>
+      <script>scripts\CheckWin.gml</script>
+      <script>scripts\SpawnResult.gml</script>
+    </scripts>
+    <scripts name="Interface">
+      <script>scripts\KeyboardPress.gml</script>
+      <script>scripts\MouseClick.gml</script>
+      <script>scripts\MouseOver.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">

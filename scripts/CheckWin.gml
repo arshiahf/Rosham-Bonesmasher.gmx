@@ -16,7 +16,7 @@ if(playerThrow == cpuThrow)
 else if(playerThrow == global.ROCK and cpuThrow == global.SCISSORS or playerThrow == global.PAPER and cpuThrow == global.ROCK or playerThrow == global.SCISSORS and cpuThrow == global.PAPER)
 {
     global.playerResultHistory = global.WIN + global.playerResultHistory;
-    global.playerWins = global.playerWins + 1;
+    global.playerWins += 1;
     global.cpuResultHistory = global.LOSE + global.cpuResultHistory;
     //show_debug_message(global.cpuHistory);
     //show_debug_message(cpuThrow);
@@ -28,7 +28,7 @@ else if(playerThrow == global.ROCK and cpuThrow == global.SCISSORS or playerThro
 }
 global.playerResultHistory = global.LOSE + global.playerResultHistory;
 global.cpuResultHistory = global.WIN + global.cpuResultHistory;
-global.cpuWins = global.cpuWins + 1;
+global.cpuWins += 1;
 //show_debug_message(global.cpuHistory);
 //show_debug_message(cpuThrow);
 //show_debug_message("You Lose");

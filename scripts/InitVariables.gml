@@ -26,4 +26,13 @@ global.playerWins = 0;
 global.cpuWins = 0;
 global.cpuvscpuRounds = 100;
 global.patternWins = 0;
+global.patternLosses = 0;
 global.learningWins = 0;
+global.learningLosses = 0;
+global.totalPatternRounds = 0;
+global.totalLearningRounds = 0;
+
+// File Variables
+global.playerName = "";
+global.saveDir = "saves\";
+global.cpuTrackerFile = "cpuTracker";

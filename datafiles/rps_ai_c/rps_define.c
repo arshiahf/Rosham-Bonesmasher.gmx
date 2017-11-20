@@ -213,7 +213,3 @@ char chanceThrow(char lastThrow, int clockwise, int counterclockwise)
 
     return lastThrow;
 }
-
-//------------------------------------------------------ Adaptive AI -----------------------------------------------------------------------//
-
-//

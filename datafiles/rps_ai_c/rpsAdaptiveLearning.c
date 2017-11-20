@@ -330,4 +330,3 @@ const char learningThrow(char lastThrow, int clockwise, int counterClockwise)
     }
     return counterclockwiseThrow(bestThrow);
 }
-

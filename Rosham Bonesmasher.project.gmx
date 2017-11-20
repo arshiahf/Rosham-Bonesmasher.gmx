@@ -87,7 +87,15 @@
       <script>scripts\MouseClick.gml</script>
       <script>scripts\MouseOver.gml</script>
     </scripts>
+    <scripts name="File manipulation">
+      <script>scripts\SaveOpen.gml</script>
+      <script>scripts\SaveCreate.gml</script>
+      <script>scripts\CPUTracker.gml</script>
+    </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
   <objects name="objects">
     <object>objects\initialize</object>
     <object>objects\objectGeneric</object>

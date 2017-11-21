@@ -11,8 +11,10 @@ global.HARDER = "harder";
 global.ADAPTIVEPATTERN = "adaptivepattern";
 global.ADAPTIVELEARNING = "adaptivelearning";
 global.WIN = "w";
+global.ROUNDWIN = "W";
 global.TIE = "t";
 global.LOSE = "l";
+global.ROUNDLOSE = "L";
 
 // RPS variables
 global.difficulty = global.ADAPTIVELEARNING;

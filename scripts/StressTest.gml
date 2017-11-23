@@ -2,7 +2,7 @@ global.learningWins = 0;
 global.patternWins = 0;
 for(i = 0; i < 10000; i++)
 {
-    //if(i % 25 == 0)
+    if(i % 20 == 0)
     {
         global.playerResultHistory = "";
         global.playerHistory = "";

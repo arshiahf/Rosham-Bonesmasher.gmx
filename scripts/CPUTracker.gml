@@ -1,14 +1,14 @@
 cpuTrackerRead = file_text_open_read(global.cpuTrackerFile);
 if(cpuTrackerRead != -1)
 {
-    global.patternWins += file_text_read_string(cpuTrackerRead);
-    global.patternLosses += file_text_read_string(cpuTrackerRead);
-    global.learningWins += file_text_read_string(cpuTrackerRead);
-    global.learningLosses += file_text_read_string(cpuTrackerRead);
-    global.totalPatternRounds += file_text_read_string(cpuTrackerRead);
-    global.totalLearningRounds += file_text_read_string(cpuTrackerRead);
+    global.patternWins += file_text_read_real(cpuTrackerRead);
+    global.patternLosses += file_text_read_real(cpuTrackerRead);
+    global.learningWins += file_text_read_real(cpuTrackerRead);
+    global.learningLosses += file_text_read_real(cpuTrackerRead);
+    global.totalPatternRounds += file_text_read_real(cpuTrackerRead);
+    global.totalLearningRounds += file_text_read_real(cpuTrackerRead);
 }
-file_text_close(cpuTracker);
+file_text_close(cpuTrackerRead);
 
 cpuTracker = file_text_open_write(global.cpuTrackerFile);
 if(cpuTracker != -1)

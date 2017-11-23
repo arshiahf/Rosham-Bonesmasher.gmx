@@ -1,22 +1,10 @@
 #include "rps_ai.h"
 
-// Basic throw concepts
-const char ROCK = 'r';
-const char PAPER = 'p';
-const char SCISSORS = 's';
-
 // Difficulty values
 const char HARD[] = "hard";
 const char HARDER[] = "harder";
 const char ADAPTIVEPATTERN[] = "adaptivepattern";
 const char ADAPTIVELEARNING[] = "adaptivelearning";
-
-// Possible results
-const char TIE = 't';
-const char WIN = 'w';
-const char LOSE = 'l';
-const char ROUNDWIN = 'W';
-const char ROUNDLOSE = 'L';
 
 // Throw values
 const char VERYLOW[] = "vlow";
@@ -24,6 +12,12 @@ const char LOW[] = "low";
 const char MEDIUM[] = "medium";
 const char HIGH[] = "high";
 const char VERYHIGH[] = "vhigh";
+
+// Declare return variable
+char rpsThrow[2];
+
+// rps_define local functions
+char rpsFirst();
 
 // Returns a pseudo-random number using the system clock as a seed
 int randnum(int cap)
@@ -36,9 +30,9 @@ int randnum(int cap)
 // Returns throw based upon difficulty and player input
 // resultHistory is the history of the game from the player's perspective
 
-GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cpuHistory, char * resultHistory)
+GMEXPORT char *rpsReturn(const char *difficulty, char *playerInput, char *cpuHistory, char *resultHistory)
 {
-    rpsThrow[1] = 0;
+    rpsThrow[1] = '\0';
 
     if(strlen(playerInput) == 1)
     {
@@ -46,8 +40,8 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
         return rpsThrow;
     }
 
-    cpuLast = cpuHistory[0];
-    lastResult = resultHistory[0];
+    char cpuLast = cpuHistory[0];
+    char lastResult = resultHistory[0];
 
     if(!(strcmp(HARD, difficulty)))
     {
@@ -61,7 +55,7 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
     }
     else if(!(strcmp(ADAPTIVEPATTERN, difficulty)))
     {
-        rpsThrow[0] = rpsAdaptivePattern(playerInput);
+        rpsThrow[0] = rpsAdaptivePattern(playerInput, cpuLast, lastResult);
     }
     else if(!(strcmp(ADAPTIVELEARNING, difficulty)))
     {
@@ -69,7 +63,7 @@ GMEXPORT char * rpsReturn(const char * difficulty, char * playerInput, char * cp
     }
     else
     {
-        rpsThrow[0] = rpsNormal(cpuLast);
+        rpsThrow[0] = rpsNormal(cpuLast, lastResult);
     }
 
     return rpsThrow;
@@ -94,30 +88,6 @@ char rpsFirst()
     else
     {
         return SCISSORS;
-    }
-}
-
-// Calculates the number of wins, losses, tie, and total throws
-void setResult(char * lastResultInput)
-{
-    int i = 0;
-    while(i < strlen(lastResultInput))
-    {
-        char tempRes = lastResultInput[i];
-        if(TIE == tempRes)
-        {
-            numTie++;
-        }
-        else if(WIN == tempRes || ROUNDWIN == tempRes)
-        {
-            numWin++;
-        }
-        else
-        {
-            numLoss++;
-        }
-        totalThrows++;
-        i++;
     }
 }
 
@@ -165,11 +135,11 @@ char clockwiseThrow(char lastThrow)
 {
     switch(lastThrow)
     {
-        case 'r':
+        case ROCK:
             return SCISSORS;
-        case 'p':
+        case PAPER:
             return ROCK;
-        case 's':
+        case SCISSORS:
             return PAPER;
     }
 
@@ -181,11 +151,11 @@ char counterclockwiseThrow(char lastThrow)
 {
     switch(lastThrow)
     {
-        case 'r':
+        case ROCK:
             return PAPER;
-        case 'p':
+        case PAPER:
             return SCISSORS;
-        case 's':
+        case SCISSORS:
             return ROCK;
     }
 

@@ -1,43 +1,43 @@
 #include "rps_ai.h"
 
-const char CLOCKWISE = 'c';
-const char COUNTERCLOCKWISE = 'C';
+// Possible directions
+#define CLOCKWISE 'c'
+#define COUNTERCLOCKWISE 'C'
 
-
-
-int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int totalThrows, int *absoluteThrows);
+int *calculateHabitShift(const char *playerHistory, const char *resultHistory, int totalThrows);
 const char determineDirection(char init, char second);
 char decideThrow(int clockwiseChance);
 const char learningThrow(char lastThrow, int clockwise, int counterClockwise);
 
-char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, const char * resultHistory)
+char rpsAdaptiveLearning(const char *playerHistory, const char *cpuHistory, const char *resultHistory)
 {
     int totalThrows = 0;
     char returnthrow;
     char playerLast = playerHistory[1];
+    char lastResult = resultHistory[0];
+    char cpuLast = cpuHistory[0];
 
     // Win Cw, Win CCw, Lose Cw, Lose CCw, Tie Cw, Tie CCw
-    int *absoluteThrows = (int*)malloc(6 * sizeof(int));
-    absoluteThrows = calculateHabitShift(playerHistory, resultHistory, totalThrows, absoluteThrows);
+    int *absoluteThrows = calculateHabitShift(playerHistory, resultHistory, totalThrows);
 
-    if(resultHistory[0])
+    if(lastResult)
     {
-        switch(resultHistory[0])
+        switch(lastResult)
         {
-            case 'w':
-            case 'W':
+            case WIN:
+            case ROUNDWIN:
                 returnthrow = learningThrow(playerLast, absoluteThrows[0], absoluteThrows[1]);
                 break;
-            case 'l':
-            case 'L':
+            case LOSE:
+            case ROUNDLOSE:
                 returnthrow = learningThrow(playerLast, absoluteThrows[2], absoluteThrows[3]);
                 break;
-            case 't':
+            case TIE:
                 returnthrow = learningThrow(playerLast, absoluteThrows[4], absoluteThrows[5]);
                 break;
             default:
                 free(absoluteThrows);
-                return rpsNormal(cpuHistory[0]);
+                return rpsNormal(cpuLast, lastResult);
         }
         free(absoluteThrows);
         return counterclockwiseThrow(returnthrow);
@@ -46,45 +46,33 @@ char rpsAdaptiveLearning(const char * playerHistory, const char * cpuHistory, co
     else
     {
         free(absoluteThrows);
-        return rpsNormal(cpuHistory[0]);
+        return rpsNormal(cpuLast, lastResult);
     }
 }
 
-int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int totalThrows, int *absoluteThrows)
+int* calculateHabitShift(const char *playerHistory, const char *resultHistory, int totalThrows)
 {
     int *absThrows = (int*)malloc(6 * sizeof(int));
 
-    int totalThrowWin;
-    int totalThrowLose;
-    int totalThrowTie;
+    int numWin=0, numLoss=0, numTie=0;
 
-    int totalClockwiseWin;
-    int totalCounterClockwiseWin;
-    int totalClockwiseLose;
-    int totalCounterClockwiseLose;
-    int totalClockwiseTie;
-    int totalCounterClockwiseTie;
+    int totalThrowWin=0, totalThrowLose=0, totalThrowTie=0;
 
-    int throwClockwiseWinCount;
-    int throwCounterClockwiseWinCount;
-    int throwClockwiseLoseCount;
-    int throwCounterClockwiseLoseCount;
-    int throwClockwiseTieCount;
-    int throwCounterClockwiseTieCount;
+    int totalClockwiseWin=0, totalCounterClockwiseWin=0;
+    int totalClockwiseLose=0, totalCounterClockwiseLose=0;
+    int totalClockwiseTie=0, totalCounterClockwiseTie=0;
 
-    double clockwiseWin;
-    double counterClockwiseWin;
-    double clockwiseLose;
-    double counterClockwiseLose;
-    double clockwiseTie;
-    double counterClockwiseTie;
+    int throwClockwiseWinCount=0, throwCounterClockwiseWinCount=0;
+    int throwClockwiseLoseCount=0, throwCounterClockwiseLoseCount=0;
+    int throwClockwiseTieCount=0, throwCounterClockwiseTieCount=0;
 
-    double throwClockwiseWin;
-    double throwCounterClockwiseWin;
-    double throwClockwiseLose;
-    double throwCounterClockwiseLose;
-    double throwClockwiseTie;
-    double throwCounterClockwiseTie;
+    double clockwiseWin=0, counterClockwiseWin=0;
+    double clockwiseLose=0, counterClockwiseLose=0;
+    double clockwiseTie=0, counterClockwiseTie=0;
+
+    double throwClockwiseWin=0, throwCounterClockwiseWin=0;
+    double throwClockwiseLose=0, throwCounterClockwiseLose=0;
+    double throwClockwiseTie=0, throwCounterClockwiseTie=0;
 
     int i = 0;
     while(i < strlen(resultHistory))
@@ -97,11 +85,11 @@ int* calculateHabitShift(const char *playerHistory, const char *resultHistory, i
         {
             switch (determineDirection(playerHistory[i + 1], playerHistory[i]))
             {
-                case 'c':
+                case CLOCKWISE:
                     if(historySame)throwClockwiseWinCount++;
                     totalClockwiseWin++;
                     break;
-                case 'C':
+                case COUNTERCLOCKWISE:
                     if(historySame)throwCounterClockwiseWinCount++;
                     totalCounterClockwiseWin++;
                     break;
@@ -115,11 +103,11 @@ int* calculateHabitShift(const char *playerHistory, const char *resultHistory, i
         {
             switch (determineDirection(playerHistory[i + 1], playerHistory[i]))
             {
-                case 'c':
+                case CLOCKWISE:
                     if(historySame)throwClockwiseLoseCount++;
                     totalClockwiseLose++;
                     break;
-                case 'C':
+                case COUNTERCLOCKWISE:
                     if(historySame)throwCounterClockwiseLoseCount++;
                     totalCounterClockwiseLose++;
                     break;
@@ -133,11 +121,11 @@ int* calculateHabitShift(const char *playerHistory, const char *resultHistory, i
         {
             switch (determineDirection(playerHistory[i + 1], playerHistory[i]))
             {
-                case 'c':
+                case CLOCKWISE:
                     if(historySame)throwClockwiseTieCount++;
                     totalClockwiseTie++;
                     break;
-                case 'C':
+                case COUNTERCLOCKWISE:
                     if(historySame)throwCounterClockwiseTieCount++;
                     totalCounterClockwiseTie++;
                     break;

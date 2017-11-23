@@ -1,7 +1,7 @@
 #include "rps_ai.h"
 
 // Default low level rock-paper-scissors gameplay based upon average players with low risk
-char rpsNormal(char lastThrow)
+char rpsNormal(char lastThrow, char lastResult)
 {
     // Near-random starting throw
     if(TIE == lastResult)

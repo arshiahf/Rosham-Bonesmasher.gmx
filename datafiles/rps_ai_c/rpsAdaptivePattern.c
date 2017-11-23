@@ -1,6 +1,6 @@
 #include "rps_ai.h"
 
-char rpsAdaptivePattern(const char * playerHistory)
+char rpsAdaptivePattern(const char *playerHistory, char cpuLast, char lastResult)
 {
     if(strlen(playerHistory) > 4)
     {
@@ -73,11 +73,11 @@ char rpsAdaptivePattern(const char * playerHistory)
         }
         else
         {
-            return rpsNormal(cpuLast);
+            return rpsNormal(cpuLast, lastResult);
         }
     }
     else
     {
-        return rpsNormal(cpuLast);
+        return rpsNormal(cpuLast, lastResult);
     }
 }

@@ -59,10 +59,9 @@
   </views>
   <instances>
     <instance objName="initialize" x="0" y="0" name="inst_87AF2156" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cpuPlay" x="288" y="160" name="inst_BE92366D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="rock0" x="128" y="288" name="inst_0CD4BD21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="paper0" x="224" y="288" name="inst_EB360B7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="scissors0" x="320" y="288" name="inst_A16DD82D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="learning0" x="288" y="192" name="inst_A1A9E59A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="pattern0" x="288" y="288" name="inst_3C9F0AC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="chooseDifficulty0" x="288" y="96" name="inst_6C2DB34A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

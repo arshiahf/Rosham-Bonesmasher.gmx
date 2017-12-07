@@ -4,7 +4,7 @@ char rpsAdaptivePattern(const char *playerHistory, char cpuLast, char lastResult
 {
     if(strlen(playerHistory) > 4)
     {
-        char playerPatternMatch;
+        char playerPatternMatch = '\0';
         int patternSize;
 
         if(strlen(playerHistory) > 8)

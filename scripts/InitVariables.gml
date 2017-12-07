@@ -5,6 +5,9 @@ global.PAPER = 'p';
 global.PAPERBUTTON = ord('K');
 global.SCISSORS = 's';
 global.SCISSORSBUTTON = ord('L');
+global.STARTKEY = "";
+global.PATTERNKEY = "";
+global.LEARNINGKEY = "";
 global.NORMAL = "normal";
 global.HARD = "hard";
 global.HARDER = "harder";
@@ -17,15 +20,19 @@ global.LOSE = "l";
 global.ROUNDLOSE = "L";
 
 // RPS variables
-global.difficulty = global.ADAPTIVELEARNING;
+global.difficulty = "";
 global.playerHistory = "";
 global.cpuHistory = "";
 global.playerResultHistory = "";
 global.cpuResultHistory = "";
 
 // Number Trackers
-global.playerWins = 0;
-global.cpuWins = 0;
+global.playerNumWins = 0;
+global.cpuNumWins = 0;
+global.roundWins = 0;
+global.roundTies = 0;
+global.roundLosses = 0;
+global.numWinsNeeded = 10;
 global.cpuvscpuRounds = 100;
 global.patternWins = 0;
 global.patternLosses = 0;

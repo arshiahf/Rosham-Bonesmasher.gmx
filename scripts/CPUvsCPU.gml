@@ -1,8 +1,4 @@
-//global.playerResultHistory = "";
-//global.playerHistory = "";
 global.playerWins = 0;
-//global.cpuResultHistory = "";
-//global.cpuHistory = "";
 global.cpuWins = 0;
 numRounds = global.cpuvscpuRounds;
 
@@ -31,12 +27,9 @@ while(global.cpuWins < global.cpuvscpuRounds and global.playerWins < global.cpuv
 if(global.playerWins > global.cpuWins)
 {
     global.patternWins += 1;
-    //show_debug_message("Pattern wins");
 }
 else
 {
     global.learningWins += 1;
-    //show_debug_message("Learning wins");
 }
-//show_debug_message("Learning: " + string(global.learningWins) + ", Pattern: " + string(global.patternWins));
 

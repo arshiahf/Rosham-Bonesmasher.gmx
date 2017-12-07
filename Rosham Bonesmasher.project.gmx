@@ -47,13 +47,29 @@
           <sprite>sprites\paperPressed</sprite>
           <sprite>sprites\scissors</sprite>
           <sprite>sprites\scissorsPressed</sprite>
+          <sprite>sprites\rockCute</sprite>
+          <sprite>sprites\paperCute</sprite>
+          <sprite>sprites\scissorsCute</sprite>
         </sprites>
+        <sprites name="Difficulty">
+          <sprite>sprites\learning</sprite>
+          <sprite>sprites\learningPressed</sprite>
+          <sprite>sprites\pattern</sprite>
+          <sprite>sprites\patternPressed</sprite>
+        </sprites>
+        <sprite>sprites\startGame</sprite>
       </sprites>
       <sprites name="Notification">
         <sprite>sprites\throwWin</sprite>
         <sprite>sprites\throwLose</sprite>
         <sprite>sprites\throwTie</sprite>
       </sprites>
+      <sprite>sprites\check</sprite>
+      <sprite>sprites\chooseDifficulty</sprite>
+      <sprite>sprites\chooseWisely</sprite>
+      <sprite>sprites\playerWins</sprite>
+      <sprite>sprites\cpuWins</sprite>
+      <sprite>sprites\ties</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -77,11 +93,13 @@
       <script>scripts\PlayerRPSReturn.gml</script>
       <script>scripts\CheckWin.gml</script>
       <script>scripts\SpawnResult.gml</script>
+      <script>scripts\DrawTextResults.gml</script>
     </scripts>
     <scripts name="Interface">
       <script>scripts\KeyboardPress.gml</script>
       <script>scripts\MouseClick.gml</script>
       <script>scripts\MouseOver.gml</script>
+      <script>scripts\BeginGame.gml</script>
     </scripts>
     <scripts name="File manipulation">
       <script>scripts\SaveOpen.gml</script>
@@ -91,6 +109,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
     <object>objects\initialize</object>
@@ -117,25 +136,45 @@
       <object>objects\menuGeneric</object>
       <objects name="Buttons">
         <object>objects\buttonGeneric</object>
+        <object>objects\cpuPlay</object>
         <objects name="RPS">
           <object>objects\rpsGeneric</object>
           <object>objects\rock0</object>
           <object>objects\paper0</object>
           <object>objects\scissors0</object>
+          <object>objects\rockCute0</object>
+          <object>objects\paperCute0</object>
+          <object>objects\scissorsCute0</object>
         </objects>
-        <object>objects\cpuPlay</object>
+        <objects name="Difficulty">
+          <object>objects\difficultyGeneric</object>
+          <object>objects\learning0</object>
+          <object>objects\pattern0</object>
+        </objects>
+        <object>objects\startGame0</object>
       </objects>
       <objects name="Notifications">
         <object>objects\notificationGeneric</object>
         <object>objects\throwWin0</object>
         <object>objects\throwLose0</object>
         <object>objects\throwTie0</object>
+        <object>objects\rockCuteShow</object>
+        <object>objects\paperCuteShow</object>
+        <object>objects\scissorsCuteShow</object>
       </objects>
+      <object>objects\check0</object>
+      <object>objects\chooseDifficulty0</object>
+      <object>objects\chooseWisely0</object>
+      <object>objects\playerWins0</object>
+      <object>objects\cpuWins0</object>
+      <object>objects\ties0</object>
+      <object>objects\gameResult</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\mainMenu</room>
     <room>rooms\gameRoom</room>
+    <room>rooms\gameResultRoom</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

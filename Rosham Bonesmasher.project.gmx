@@ -85,8 +85,6 @@
     <scripts name="Buttons">
       <script>scripts\CreateButtonsRPS.gml</script>
       <script>scripts\RPSExecute.gml</script>
-      <script>scripts\CPUvsCPU.gml</script>
-      <script>scripts\StressTest.gml</script>
     </scripts>
     <scripts name="RPS">
       <script>scripts\CPURPSReturn.gml</script>
@@ -136,7 +134,6 @@
       <object>objects\menuGeneric</object>
       <objects name="Buttons">
         <object>objects\buttonGeneric</object>
-        <object>objects\cpuPlay</object>
         <objects name="RPS">
           <object>objects\rpsGeneric</object>
           <object>objects\rock0</object>
